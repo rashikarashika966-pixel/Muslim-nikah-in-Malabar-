@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ml">
 <head>
@@ -5,57 +6,150 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Muslim nikah in Malabar</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Tiro+Bangla&family=Poppins:wght@400;700&display=swap');
-        
-        body { font-family: 'Poppins', sans-serif; margin: 0; padding: 0; background-color: #f4f4f4; color: #333; }
+        html, body {
+            overflow-x: hidden;
+            width: 100%;
+        }
+        * {
+            box-sizing: border-box;
+        }
+
+        body { font-family: 'Poppins', sans-serif; margin: 0; padding: 0; background-color: #f8f8f8; color: #333; }
         .hidden { display: none !important; }
 
-        .login-view { min-height: 100vh; background: linear-gradient(to bottom, #ffffff, #fde9f2); }
-        .login-container { display: flex; flex-direction: column; align-items: center; justify-content: space-between; min-height: 100vh; padding: 20px; box-sizing: border-box; text-align: center; }
+        .login-view { min-height: 100vh; background: linear-gradient(to bottom, #ffffff, #fde9f2); padding: 20px; }
+        .login-container { display: flex; flex-direction: column; align-items: center; justify-content: space-between; min-height: 100vh; text-align: center; }
         .login-content-wrap { display: flex; flex-direction: column; align-items: center; width: 100%; max-width: 400px; }
         .login-photo { width: 100%; max-width: 380px; height: auto; border-radius: 15px; box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); margin-top: 2rem; margin-bottom: 1.5rem; }
         .login-title h1 { font-family: 'Tiro Bangla', serif; font-size: 2.5rem; margin: 0; color: #333; }
         .login-title .heart { color: #e91e63; }
         .login-title span { font-family: 'Poppins', sans-serif; font-weight: bold; color: #e91e63; }
+        
         .auth-form { width: 100%; margin-top: 1rem; }
         .auth-form .input-group { margin-bottom: 1rem; }
-        .auth-form .input-field { width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 50px; box-sizing: border-box; font-size: 1rem; text-align: center; }
+        .auth-form .input-field { width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 50px; font-size: 1rem; text-align: center; }
+        
         .auth-form .btn { width: 100%; padding: 15px; border: none; border-radius: 50px; font-size: 1.1rem; font-weight: bold; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1rem; }
         .auth-form .btn-pink { background-color: #e91e63; color: white; box-shadow: 0 4px 15px rgba(233, 30, 99, 0.4); }
+        
         .auth-form .form-link { font-weight: bold; color: #333; text-decoration: none; display: block; padding: 10px; }
         .login-footer-links { width: 100%; padding: 1rem 0; text-align: right; }
         .login-footer-links a { color: #666; text-decoration: none; font-weight: bold; }
 
-        .panel-view { padding-bottom: 80px; background: linear-gradient(to bottom, #ffffff, #fde9f2); min-height: 100vh; }
+        .panel-view { padding-bottom: 80px; min-height: 100vh; }
         .panel-container { max-width: 600px; margin: 0 auto; padding: 1rem; }
-        .panel-header { background-color: #e91e63; color: white; padding: 1rem; text-align: center; position: relative; }
-        .panel-header h1 { margin: 0; font-size: 1.5rem; }
-        .panel-header p { margin: 5px 0 0; }
-        .form-container, .profile-list-container { background-color: pink; padding: 1.5rem; border-radius: 8px; margin-top: 1rem; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        
+        .panel-header { background-color: #e91e63; color: white; padding: 1rem 1.5rem; text-align: center; position: relative; border-radius: 8px; }
+        .panel-header h1 { margin: 0; font-size: 1.6rem; }
+        .panel-header p { margin: 4px 0 0; opacity: 0.9; }
+        
+        .form-container { background-color: #fff; padding: 1.5rem; border-radius: 8px; margin-top: 1rem; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .profile-list-container { padding: 1rem 0; margin-top: 1rem; }
+
         .form-container h2 { text-align: center; margin-top: 0; margin-bottom: 2rem; color: #e91e63; }
         .input-group { margin-bottom: 1.2rem; display: flex; flex-direction: column; text-align: left; }
         .input-group label { margin-bottom: 8px; color: #555; font-weight: normal; }
-        .input-group input, .input-group select, .input-group textarea { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box; font-size: 1rem;}
-        .btn-pink-form { display: inline-block; width: 100%; padding: .75rem; border: none; border-radius: 8px; color: white; background-color: #e91e63; text-align: center; cursor: pointer; font-size: 1rem; text-decoration: none; box-sizing: border-box; }
+        .input-group input, .input-group select, .input-group textarea { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 8px; font-size: 1rem;}
+        
+        .btn-pink-form { display: block; width: 100%; padding: 14px; border: none; border-radius: 8px; color: white; background-color: #e91e63; text-align: center; cursor: pointer; font-size: 1rem; text-decoration: none; font-weight: bold; }
+        
         .btn-logout { background-color: #6c757d; color: white; width: auto; position: absolute; top: 1rem; right: 1rem; padding: 0.5rem 1rem; border-radius: 50px; font-size: 0.9rem;}
         .btn-danger { background-color: #dc3545; }
-        .profile-card { border: 1px solid #eee; padding: 1rem; margin-bottom: 1rem; border-radius: 8px; display: flex; align-items: center; cursor: pointer; background-color: #fff; }
-        .profile-card:hover { background-color: #fdf2f6; }
-        .profile-card img { width: 100px; height: 100px; border-radius: 8px; object-fit: cover; margin-right: 1.5rem; }
-        .profile-card-info { flex-grow: 1; }
-        .profile-card-info p { margin: 4px 0; font-size: 0.9rem; color: #555;}
+
+        .profile-card {
+          width: 100%;
+          max-width: 360px;
+          background: #fff;
+          border-radius: 16px;
+          overflow: hidden;
+          box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+          margin: 20px auto;
+        }
+        .card-image-container {
+            position: relative;
+            cursor: pointer;
+        }
+        .profile-card img {
+          width: 100%;
+          height: 280px;
+          object-fit: cover;
+          display: block;
+        }
+        .card-overlay {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .overlay-item {
+            background-color: rgba(0, 0, 0, 0.6);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        .overlay-item span {
+            margin-left: 6px;
+        }
+        .details {
+          padding: 16px;
+        }
+        .details h2 {
+          margin: 0;
+          font-size: 20px;
+          color: #222;
+          text-align: left;
+        }
+        .details p {
+          font-size: 14px;
+          margin: 6px 0;
+          color: #555;
+          text-align: left;
+        }
+        .buttons {
+          display: flex;
+          justify-content: space-around;
+          padding: 12px;
+          background: #fff;
+          border-top: 1px solid #eee;
+        }
+        .btn {
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          border: none;
+          font-size: 22px;
+          cursor: pointer;
+          box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+          transition: 0.3s;
+        }
+        .btn:hover {
+          transform: scale(1.1);
+        }
+        .reject { background: #ff4d4d; color: #fff; }
+        .like { background: #ff99cc; color: #fff; }
+        .star { background: #333; color: #fff; }
+        .fav { background: #ff6666; color: #fff; }
+
         .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: white; justify-content: center; align-items: center; }
-        .modal-container { display: flex; flex-direction: column; align-items: center; text-align: center; max-width: 90%; padding: 1rem; box-sizing: border-box;}
+        .modal-container { display: flex; flex-direction: column; align-items: center; text-align: center; max-width: 90%; padding: 1rem; }
         .modal-content { max-width: 100%; max-height: 50vh; border-radius: 8px; }
-        .modal-caption { margin-top: 15px; color: black; font-size: 1rem; text-align: left; max-width: 100%; }
+        .modal-caption { margin-top: 15px; color: black; font-size: 1rem; text-align: left; max-width: 100%; width: 100%; }
         .modal-caption h3 { margin: 0; text-align: center; font-size: 1.5rem; }
         .modal-caption p { margin: 8px 0; border-bottom: 1px solid #eee; padding-bottom: 8px; }
         .modal-caption p:last-child { border-bottom: none; }
         .modal-caption strong { color: #555; }
         .close-modal { position: absolute; top: 15px; right: 25px; color: #888; font-size: 40px; font-weight: bold; cursor: pointer; }
+        
         .payment-modal { background-color: rgba(0,0,0,0.6); }
-        .payment-modal-content { background-color: white; padding: 2rem; border-radius: 8px; max-width: 90%; width: 350px; position: relative; }
+        .payment-modal-content { background-color: white; padding: 2rem; border-radius: 8px; max-width: 90%; width: 320px; position: relative; }
         .payment-modal-content h2 { color: #e91e63; margin-top: 0; }
+        
         .bottom-nav { position: fixed; bottom: 0; left: 0; width: 100%; background-color: white; border-top: 1px solid #eee; display: flex; justify-content: space-around; padding: 10px 0; box-shadow: 0 -2px 5px rgba(0,0,0,0.1); z-index: 999; }
         .nav-item { display: flex; flex-direction: column; align-items: center; color: #888; text-decoration: none; font-size: 12px; border: none; background: none; }
         .nav-item svg { width: 24px; height: 24px; fill: #888; margin-bottom: 4px; }
@@ -64,363 +158,459 @@
     </style>
 </head>
 <body>
+<div id="authContainer" class="login-view">
+    <div class="login-container">
+        <div class="content-wrap">
+            <img src="https://i.ibb.co/20P8PWwb/Screenshot-20250909-081658-Facebook.jpg" alt="Kerala Muslim Couple" class="login-photo">
+            <div class="title"><h1>nikah<span class="heart">♥</span>in Malabar<span>.♥</span></h1></div>
+            <form id="loginForm" class="auth-form">
+                <button type="button" class="btn btn-pink" onclick="showAuthPage('loginFields')">Login</button>
+                <div id="loginFields" class="hidden" style="margin-top: 1rem;">
+                    <div class="input-group"><input type="email" id="loginEmail" class="input-field" placeholder="Email Address" required></div>
+                    <div class="input-group"><input type="password" id="loginPassword" class="input-field" placeholder="Password" required></div>
+                    <button type="submit" class="btn btn-pink">Confirm Login</button>
+                </div>
+            </form>
+            <a href="#" id="registerLink" class="register-link" onclick="showAuthPage('signup')">Register Free</a>
+            <form id="signupForm" class="auth-form hidden">
+                 <h2>Register Free</h2>
+                 <div class="input-group"><input type="email" id="signupEmail" class="input-field" placeholder="Email Address" required></div>
+                 <div class="input-group"><input type="password" id="signupPassword" class="input-field" placeholder="Password (min. 6 characters)" minlength="6" required></div>
+                 <button type="submit" class="btn btn-pink">Register</button>
+                 <a href="#" class="register-link" onclick="showAuthPage('login')">Already have an account? Login</a>
+            </form>
+        </div>
+        <div class="footer-links"><a href="#">Contact Us</a></div>
+    </div>
+</div>
 
-    <div id="authContainer" class="login-view">
-        <div class="login-container">
-            <div class="content-wrap">
-                <img src="https://i.ibb.co/20P8PWwb/Screenshot-20250909-081658-Facebook.jpg" alt="Kerala Muslim Couple" class="login-photo">
-                <div class="title"><h1>nikah<span class="heart">♥</span>in Malabar<span>.♥</span></h1></div>
-                <form id="loginForm" class="auth-form">
-                    <button type="button" class="btn btn-pink" onclick="showAuthPage('loginFields')">Login</button>
-                    <div id="loginFields" class="hidden" style="margin-top: 1rem;">
-                        <div class="input-group"><input type="email" id="loginEmail" class="input-field" placeholder="Email Address" required></div>
-                        <div class="input-group"><input type="password" id="loginPassword" class="input-field" placeholder="Password" required></div>
-                        <button type="submit" class="btn btn-pink">Confirm Login</button>
+<div id="mainContent" class="hidden panel-view">
+    <div class="panel-header">
+        <h1>വിവാഹ ബന്ധം</h1>
+        <p>Muslim Nikah in Malabar</p>
+        <button id="logoutBtn" class="btn btn-logout">Logout</button>
+    </div>
+    <div class="panel-container">
+        <div id="myProfilePage">
+            <div class="form-container">
+                <h2>എന്റെ പ്രൊഫൈൽ</h2>
+                <form id="profileForm">
+                    <div class="input-group"><label for="name">പേര്</label><input type="text" id="name" required></div>
+                    <div class="input-group"><label for="phone">ഫോൺ നമ്പർ</label><input type="tel" id="phone" required></div>
+                    <div class="input-group"><label for="age">വയസ്സ്</label><input type="number" id="age" required></div>
+                    <div class="input-group"><label for="gender">ലിംഗം</label><select id="gender" required><option value="Male">പുരുഷൻ</option><option value="Female">സ്ത്രീ</option></select></div>
+                    <div class="input-group"><label for="mother_tongue">മാതൃഭാഷ</label><input type="text" id="mother_tongue" value="Malayalam" required></div>
+                    <div class="input-group"><label for="district">ജില്ല</label><input type="text" id="district" required></div>
+                    <div class="input-group"><label for="education">വിദ്യാഭ്യാസം</label><input type="text" id="education" required></div>
+                    <div class="input-group"><label for="profession">ജോലി</label><input type="text" id="profession" required></div>
+                    <div class="input-group"><label for="about">വിവരണം</label><textarea id="about" rows="4"></textarea></div>
+                    <div class="input-group">
+                        <label for="photo">ഫോട്ടോ</label>
+                        <input type="file" id="photo" accept="image/*">
+                        <img id="photoPreview" src="" alt="Photo Preview" style="max-width: 100px; margin-top: 10px; display: none;">
                     </div>
-                </form>
-                <a href="#" id="registerLink" class="register-link" onclick="showAuthPage('signup')">Register Free</a>
-                <form id="signupForm" class="auth-form hidden">
-                     <h2>Register Free</h2>
-                     <div class="input-group"><input type="email" id="signupEmail" class="input-field" placeholder="Email Address" required></div>
-                     <div class="input-group"><input type="password" id="signupPassword" class="input-field" placeholder="Password (min. 6 characters)" minlength="6" required></div>
-                     <button type="submit" class="btn btn-pink">Register</button>
-                     <a href="#" class="register-link" onclick="showAuthPage('login')">Already have an account? Login</a>
+                    <button type="submit" id="saveProfileBtn" class="btn-pink-form">സേവ് ചെയ്യുക</button>
                 </form>
             </div>
-            <div class="footer-links"><a href="#">Contact Us</a></div>
         </div>
-    </div>
-
-    <div id="mainContent" class="hidden panel-view">
-        <div class="panel-header">
-            <h1>വിവാഹ ബന്ധം</h1>
-            <p>Muslim Nikah in Malabar</p>
-            <button id="logoutBtn" class="btn btn-logout">പുറത്ത് പോവുക</button>
+        <div id="profileListPage" class="profile-list-container hidden">
+             <h2 style="text-align: center; margin-top: 0; margin-bottom: 2rem; color: #e91e63;">എല്ലാ പ്രൊഫൈലുകളും</h2>
+             <div class="gender-tabs">
+                <button class="gender-tab active" data-gender="Male" onclick="showGenderTab('Male', event)">പുരുഷന്മാർ</button>
+                <button class="gender-tab" data-gender="Female" onclick="showGenderTab('Female', event)">സ്ത്രീകൾ</button>
+             </div>
+             <div id="profilesContainer">
+                <!-- Supabase-ൽ നിന്നുള്ള പ്രൊഫൈലുകൾ ഇവിടെ കാണിക്കും -->
+             </div>
         </div>
-        <div class="panel-container">
-            <div id="myProfilePage">
-                <div class="form-container">
-                    <h2>എന്റെ പ്രൊഫൈൽ</h2>
-                    <form id="profileForm">
-                        <div class="input-group"><label for="name">പേര്</label><input type="text" id="name" required></div>
-                        <div class="input-group"><label for="phone">ഫോൺ നമ്പർ</label><input type="tel" id="phone" required></div>
-                        <div class="input-group"><label for="age">വയസ്സ്</label><input type="number" id="age" required></div>
-                        <div class="input-group"><label for="gender">ലിംഗം</label><select id="gender" required><option value="Male">പുരുഷൻ</option><option value="Female">സ്ത്രീ</option></select></div>
-                        <div class="input-group"><label for="mother_tongue">മാതൃഭാഷ</label><input type="text" id="mother_tongue" value="Malayalam" required></div>
-                        <div class="input-group"><label for="district">ജില്ല</label><input type="text" id="district" required></div>
-                        <div class="input-group"><label for="education">വിദ്യാഭ്യാസം</label><input type="text" id="education" required></div>
-                        <div class="input-group"><label for="profession">ജോലി</label><input type="text" id="profession" required></div>
-                        <div class="input-group"><label for="about">വിവരണം</label><textarea id="about" rows="4"></textarea></div>
-                        <div class="input-group">
-                            <label for="photo">ഫോട്ടോ</label>
-                            <input type="file" id="photo" accept="image/*">
-                            <img id="photoPreview" src="" alt="Photo Preview" style="max-width: 100px; margin-top: 10px; display: none;">
-                        </div>
-                        <button type="submit" id="saveProfileBtn" class="btn btn-pink-form">സേവ് ചെയ്യുക</button>
-                    </form>
-                </div>
+        <div id="settingsPage" class="hidden">
+            <div class="form-container">
+                <h2>പാസ്‌വേഡ് മാറ്റുക</h2>
+                <form id="changePasswordForm">
+                    <div class="input-group">
+                        <label for="newPassword">പുതിയ പാസ്‌വേഡ്</label>
+                        <input type="password" id="newPassword" minlength="6" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="confirmPassword">പാസ്‌വേഡ് ഉറപ്പിക്കുക</label>
+                        <input type="password" id="confirmPassword" minlength="6" required>
+                    </div>
+                    <button type="submit" class="btn-pink-form">പാസ്‌വേഡ് മാറ്റുക</button>
+                </form>
             </div>
-            <div id="profileListPage" class="profile-list-container hidden">
-                 <h2>എല്ലാ പ്രൊഫൈലുകളും</h2>
-                 <div class="gender-tabs">
-                    <button class="gender-tab active" data-gender="Male" onclick="showGenderTab('Male', event)">പുരുഷന്മാർ</button>
-                    <button class="gender-tab" data-gender="Female" onclick="showGenderTab('Female', event)">സ്ത്രീകൾ</button>
-                 </div>
-                 <div id="profilesContainer"><p>പ്രൊഫൈലുകൾ ലോഡ് ചെയ്യുന്നു...</p></div>
-            </div>
-            <div id="settingsPage" class="hidden">
-                <div class="form-container">
-                    <h2>പാസ്‌വേഡ് മാറ്റുക</h2>
-                    <form id="changePasswordForm">
-                        <div class="input-group">
-                            <label for="newPassword">പുതിയ പാസ്‌വേഡ്</label>
-                            <input type="password" id="newPassword" minlength="6" required>
-                        </div>
-                        <div class="input-group">
-                            <label for="confirmPassword">പാസ്‌വേഡ് ഉറപ്പിക്കുക</label>
-                            <input type="password" id="confirmPassword" minlength="6" required>
-                        </div>
-                        <button type="submit" class="btn btn-pink-form">പാസ്‌വേഡ് മാറ്റുക</button>
-                    </form>
-                </div>
-                <div class="form-container" style="margin-top: 2rem;">
-                    <h2>അക്കൗണ്ട് ഒഴിവാക്കുക</h2>
-                    <p style="color: #c0392b;">ശ്രദ്ധിക്കുക: ഈ നടപടി പിന്നീട് മാറ്റാൻ കഴിയില്ല. നിങ്ങളുടെ അക്കൗണ്ട് ഡിലീറ്റ് ചെയ്യാൻ അഭ്യർത്ഥിച്ചാൽ, നിങ്ങൾക്ക് പിന്നീട് ലോഗിൻ ചെയ്യാൻ കഴിയില്ല.</p>
-                    <button id="deleteAccountBtn" class="btn btn-danger">അക്കൗണ്ട് ഡിലീറ്റ് ചെയ്യാൻ അഭ്യർത്ഥിക്കുക</button>
-                </div>
+            <div class="form-container" style="margin-top: 2rem;">
+                <h2>അക്കൗണ്ട് ഒഴിവാക്കുക</h2>
+                <p style="color: #c0392b;">ശ്രദ്ധിക്കുക: ഈ നടപടി പിന്നീട് മാറ്റാൻ കഴിയില്ല. നിങ്ങളുടെ അക്കൗണ്ട് ഡിലീറ്റ് ചെയ്യാൻ അഭ്യർത്ഥിച്ചാൽ, നിങ്ങൾക്ക് പിന്നീട് ലോഗിൻ ചെയ്യാൻ കഴിയില്ല.</p>
+                <button id="deleteAccountBtn" class="btn-pink-form btn-danger">അക്കൗണ്ട് ഡിലീറ്റ് ചെയ്യാൻ അഭ്യർത്ഥിക്കുക</button>
             </div>
         </div>
-        <div id="bottomNav" class="bottom-nav hidden">
-            <a href="#" class="nav-item active" data-page="myProfile" onclick="showMainPage('myProfile', event)">
-                <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
-                My Profile
-            </a>
-            <a href="#" class="nav-item" data-page="profileList" onclick="showMainPage('profileList', event)">
-                <svg viewBox="0 0 24 24"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg>
-                Profiles
-            </a>
-            <a href="#" class="nav-item" data-page="settings" onclick="showMainPage('settings', event)">
-                <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.08-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98s.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.23.08.49 0 .61.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z"/></svg>
-                Settings
-            </a>
-            <a id="contactAdminNav" href="#" class="nav-item">
-                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#888888"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M21.3,4.4C19.1,2.4,16.2,1.3,13,1.3S6.9,2.4,4.7,4.4C2.6,6.5,1.5,9.3,1.5,12.5s1.1,6,3.2,8.1c2.1,2.1,5,3.2,8.3,3.2h0.1 c3.2,0,6-1.2,8.1-3.3l-2.3-2.3c-1.4,1-3.2,1.6-5,1.6c-2.4,0-4.6-1-6.2-2.6c-1.6-1.6-2.6-3.8-2.6-6.2s1-4.6,2.6-6.2 C8.9,6.5,11,6,13,6c1.8,0,3.5,0.6,4.9,1.6l2.3-2.3C19.9,4.9,19.6,4.7,19.3,4.5z M18.4,14.5c-0.3,1.3-1.5,2.2-2.8,2.2 s-2.5-0.9-2.8-2.2H11v-2.2h1.8c0.3-1.3,1.5-2.2,2.8-2.2s2.5,0.9,2.8,2.2H20v2.2H18.4z M13,12.9c-0.9,0-1.6,0.7-1.6,1.6 s0.7,1.6,1.6,1.6s1.6-0.7,1.6-1.6S13.9,12.9,13,12.9z"/></svg>
-                Contact
-            </a>
-        </div>
     </div>
-    
-    <div id="imageModal" class="modal">
-        <span class="close-modal" onclick="closeImageModal()">&times;</span>
-        <div class="modal-container">
-            <img class="modal-content" id="modalImage">
-            <div id="modalCaption" class="modal-caption"></div>
-            <div id="phoneDisplay" style="margin-top: 15px; width: 100%;"></div>
-        </div>
+    <div id="bottomNav" class="bottom-nav hidden">
+        <a href="#" class="nav-item active" data-page="myProfile" onclick="showMainPage('myProfile', event)">
+            <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+            My Profile
+        </a>
+        <a href="#" class="nav-item" data-page="profileList" onclick="showMainPage('profileList', event)">
+            <svg viewBox="0 0 24 24"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg>
+            Profiles
+        </a>
+        <a href="#" class="nav-item" data-page="settings" onclick="showMainPage('settings', event)">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69-.98l-2.49-1c-.23-.08-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98s.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12-.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73-1.69-.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.23.08.49 0 .61.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z"/></svg>
+            Settings
+        </a>
+        <a id="contactAdminNav" href="#" class="nav-item">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#888888"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M21.3,4.4C19.1,2.4,16.2,1.3,13,1.3S6.9,2.4,4.7,4.4C2.6,6.5,1.5,9.3,1.5,12.5s1.1,6,3.2,8.1c2.1,2.1,5,3.2,8.3,3.2h0.1 c3.2,0,6-1.2,8.1-3.3l-2.3-2.3c-1.4,1-3.2,1.6-5,1.6c-2.4,0-4.6-1-6.2-2.6c-1.6-1.6-2.6-3.8-2.6-6.2s1-4.6,2.6-6.2 C8.9,6.5,11,6,13,6c1.8,0,3.5,0.6,4.9,1.6l2.3-2.3C19.9,4.9,19.6,4.7,19.3,4.5z M18.4,14.5c-0.3,1.3-1.5,2.2-2.8,2.2 s-2.5-0.9-2.8-2.2H11v-2.2h1.8c0.3-1.3,1.5-2.2,2.8-2.2s2.5,0.9,2.8,2.2H20v2.2H18.4z M13,12.9c-0.9,0-1.6,0.7-1.6,1.6 s0.7,1.6,1.6,1.6s1.6-0.7,1.6-1.6S13.9,12.9,13,12.9z"/></svg>
+            Contact
+        </a>
     </div>
-    <div id="paymentModal" class="modal payment-modal">
-         <div class="payment-modal-content">
-             <span class="close-modal" onclick="closePaymentModal()">&times;</span>
-             <h2>നമ്പർ കാണാൻ പണമടയ്ക്കുക</h2>
-             <p>ഈ പ്രൊഫൈലിന്റെ ഫോൺ നമ്പർ ലഭിക്കാൻ, താഴെയുള്ള ബട്ടൺ ഉപയോഗിച്ച് UPI ആപ്പ് വഴി ₹200 അയക്കുക.</p>
-             <a id="upiPayBtn" class="btn btn-pink-form" href="#" target="_blank" style="margin-bottom: 1.5rem;">Pay ₹200 with UPI App</a>
-             <p>പണം അയച്ചതിന് ശേഷം ലഭിക്കുന്ന 12 അക്ക Transaction ID താഴെ നൽകുക.</p>
-             <form id="paymentForm">
-                 <input type="hidden" id="paymentProfileId">
-                 <div class="input-group"><label for="transactionId">Transaction ID</label><input type="text" id="transactionId" required></div>
-                 <button type="submit" class="btn btn-pink-form">അഭ്യർത്ഥന സമർപ്പിക്കുക</button>
-             </form>
-         </div>
-    </div>
-    
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const ADMIN_UPI_ID = 'bmfurniture@ibl';
-            const ADMIN_NAME = 'Kerala Matrimony';
-            const ADMIN_WHATSAPP_NUMBER = '919526605590';
-            const SUPABASE_URL = 'https://qfnkpmducfyyctgefyix.supabase.co';
-            const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFmbmtwbWR1Y2Z5eWN0Z2VmeWl4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTcyMDYzMjAsImV4cCI6MjA3Mjc4MjMyMH0.xzVRnqk9fIK71Mlca_bM5h8D9a2LqXgo7xoP6EORysE';
+</div>
 
-            const { createClient } = supabase;
-            const _supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-            
-            const authContainer = document.getElementById('authContainer');
-            const loginForm = document.getElementById('loginForm');
-            const signupForm = document.getElementById('signupForm');
-            const loginFields = document.getElementById('loginFields');
-            const mainContent = document.getElementById('mainContent');
-            const logoutBtn = document.getElementById('logoutBtn');
-            const profileForm = document.getElementById('profileForm');
-            const saveProfileBtn = document.getElementById('saveProfileBtn');
-            const myProfilePage = document.getElementById('myProfilePage');
-            const profileListPage = document.getElementById('profileListPage');
-            const profilesContainer = document.getElementById('profilesContainer');
-            const imageModal = document.getElementById('imageModal');
-            const modalImage = document.getElementById('modalImage');
-            const modalCaption = document.getElementById('modalCaption');
-            const paymentModal = document.getElementById('paymentModal');
-            const paymentForm = document.getElementById('paymentForm');
-            const phoneDisplay = document.getElementById('phoneDisplay');
-            const upiPayBtn = document.getElementById('upiPayBtn');
-            const bottomNav = document.getElementById('bottomNav');
-            const settingsPage = document.getElementById('settingsPage');
-            const changePasswordForm = document.getElementById('changePasswordForm');
-            const deleteAccountBtn = document.getElementById('deleteAccountBtn');
-            const contactAdminNav = document.getElementById('contactAdminNav');
-            
-            let currentUser = null;
+<div id="imageModal" class="modal">
+    <span class="close-modal" onclick="closeImageModal()">&times;</span>
+    <div class="modal-container">
+        <img class="modal-content" id="modalImage">
+        <div id="modalCaption" class="modal-caption"></div>
+        <div id="phoneDisplay" style="margin-top: 15px; width: 100%;"></div>
+    </div>
+</div>
+<div id="paymentModal" class="modal payment-modal">
+     <div class="payment-modal-content">
+         <span class="close-modal" onclick="closePaymentModal()">&times;</span>
+         <h2>നമ്പർ കാണാൻ പണമടയ്ക്കുക</h2>
+         <p>ഈ പ്രൊഫൈലിന്റെ ഫോൺ നമ്പർ ലഭിക്കാൻ, താഴെയുള്ള ബട്ടൺ ഉപയോഗിച്ച് UPI ആപ്പ് വഴി ₹200 അയക്കുക.</p>
+         <a id="upiPayBtn" class="btn-pink-form" href="#" target="_blank" style="margin-bottom: 1.5rem;">Pay ₹200 with UPI App</a>
+         <p>പണം അയച്ചതിന് ശേഷം ലഭിക്കുന്ന 12 അക്ക Transaction ID താഴെ നൽകുക.</p>
+         <form id="paymentForm">
+             <input type="hidden" id="paymentProfileId">
+             <div class="input-group"><label for="transactionId">Transaction ID</label><input type="text" id="transactionId" required></div>
+             <button type="submit" class="btn-pink-form">അഭ്യർത്ഥന സമർപ്പിക്കുക</button>
+         </form>
+     </div>
+</div>
 
-            window.showAuthPage = function(pageName) {
-                loginFields.classList.add('hidden');
-                if (pageName === 'signup') {
-                    loginForm.classList.add('hidden');
-                    document.getElementById('registerLink').classList.add('hidden');
-                    signupForm.classList.remove('hidden');
-                } else if (pageName === 'loginFields') {
-                    loginFields.classList.remove('hidden');
-                } else {
-                    loginForm.classList.remove('hidden');
-                    signupForm.classList.add('hidden');
-                    document.getElementById('registerLink').classList.remove('hidden');
-                }
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const ADMIN_UPI_ID = 'bmfurniture@ibl';
+        const ADMIN_NAME = 'Kerala Matrimony';
+        const ADMIN_WHATSAPP_NUMBER = '919526605590';
+        
+        // =================================================================
+        // **പ്രധാനപ്പെട്ടത്! നിങ്ങളുടെ API കീ ഇവിടെ ചേർക്കുക**
+        // =================================================================
+        const SUPABASE_URL = 'https://qfnkpmducfyyctgefyix.supabase.co'; // നിങ്ങളുടെ Supabase URL ഇവിടെ നൽകുക
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFmbmtwbWR1Y2Z5eWN0Z2VmeWl4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTcyMDYzMjAsImV4cCI6MjA3Mjc4MjMyMH0.xzVRnqk9fIK71Mlca_bM5h8D9a2LqXgo7xoP6EORysE'; // നിങ്ങളുടെ Supabase Anon Key ഇവിടെ നൽകുക
+        // =================================================================
+
+        const { createClient } = supabase;
+        const _supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        
+        const authContainer = document.getElementById('authContainer');
+        const loginForm = document.getElementById('loginForm');
+        const signupForm = document.getElementById('signupForm');
+        const loginFields = document.getElementById('loginFields');
+        const mainContent = document.getElementById('mainContent');
+        const logoutBtn = document.getElementById('logoutBtn');
+        const profileForm = document.getElementById('profileForm');
+        const saveProfileBtn = document.getElementById('saveProfileBtn');
+        const myProfilePage = document.getElementById('myProfilePage');
+        const profileListPage = document.getElementById('profileListPage');
+        const profilesContainer = document.getElementById('profilesContainer');
+        const imageModal = document.getElementById('imageModal');
+        const modalImage = document.getElementById('modalImage');
+        const modalCaption = document.getElementById('modalCaption');
+        const paymentModal = document.getElementById('paymentModal');
+        const paymentForm = document.getElementById('paymentForm');
+        const phoneDisplay = document.getElementById('phoneDisplay');
+        const upiPayBtn = document.getElementById('upiPayBtn');
+        const bottomNav = document.getElementById('bottomNav');
+        const settingsPage = document.getElementById('settingsPage');
+        const changePasswordForm = document.getElementById('changePasswordForm');
+        const deleteAccountBtn = document.getElementById('deleteAccountBtn');
+        const contactAdminNav = document.getElementById('contactAdminNav');
+        
+        let currentUser = null;
+
+        window.handleCardAction = async function(event, action, profileId) {
+            event.stopPropagation(); 
+            if (!currentUser) return alert('Please login to interact with profiles.');
+
+            if (action === 'fav') {
+                alert('Added to your Favorites!');
+                return;
             }
             
-            window.showMainPage = function(pageName, event) {
-                myProfilePage.classList.toggle('hidden', pageName !== 'myProfile');
-                profileListPage.classList.toggle('hidden', pageName !== 'profileList');
-                settingsPage.classList.toggle('hidden', pageName !== 'settings');
-                
+            // ഉപയോക്താവ് ഇതിനകം ലൈക്ക്/സ്റ്റാർ ചെയ്തിട്ടുണ്ടോ എന്ന് പരിശോധിക്കുന്നു
+            const { data: existing, error: checkError } = await _supabase
+                .from('user_interactions')
+                .select('id')
+                .eq('user_id', currentUser.id)
+                .eq('profile_id', profileId)
+                .eq('interaction_type', action)
+                .single();
+
+            if (existing) {
+                alert(`You have already added a ${action} to this profile.`);
+                return;
+            }
+
+            // ഡാറ്റാബേസിലേക്ക് പുതിയ വിവരം ചേർക്കുന്നു
+            const { error } = await _supabase
+                .from('user_interactions')
+                .insert({ 
+                    user_id: currentUser.id, 
+                    profile_id: profileId, 
+                    interaction_type: action 
+                });
+
+            if (error) {
+                return alert('Error: ' + error.message);
+            }
+            
+            // സ്ക്രീനിൽ കൗണ്ട് അപ്ഡേറ്റ് ചെയ്യുന്നു
+            const card = document.getElementById('profile-card-' + profileId);
+            const overlay = card.querySelector('.card-overlay');
+            let iconChar = action === 'like' ? '💗' : '⭐';
+            let existingOverlay = overlay.querySelector(`.overlay-item[data-action="${action}"]`);
+
+            if (existingOverlay) {
+                let countSpan = existingOverlay.querySelector('.count');
+                countSpan.textContent = parseInt(countSpan.textContent) + 1;
+            } else {
+                const newItem = document.createElement('div');
+                newItem.classList.add('overlay-item');
+                newItem.dataset.action = action;
+                newItem.innerHTML = `${iconChar} <span class="count">1</span>`;
+                overlay.appendChild(newItem);
+            }
+        }
+        
+        window.showAuthPage = function(pageName) {
+            loginFields.classList.add('hidden');
+            if (pageName === 'signup') {
+                loginForm.classList.add('hidden');
+                document.getElementById('registerLink').classList.add('hidden');
+                signupForm.classList.remove('hidden');
+            } else if (pageName === 'loginFields') {
+                loginFields.classList.remove('hidden');
+            } else {
+                loginForm.classList.remove('hidden');
+                signupForm.classList.add('hidden');
+                document.getElementById('registerLink').classList.remove('hidden');
+            }
+        }
+        
+        window.showMainPage = function(pageName, event) {
+            myProfilePage.classList.toggle('hidden', pageName !== 'myProfile');
+            profileListPage.classList.toggle('hidden', pageName !== 'profileList');
+            settingsPage.classList.toggle('hidden', pageName !== 'settings');
+            
+            if(document.querySelector('.nav-item.active')) {
                 document.querySelector('.nav-item.active').classList.remove('active');
-                event.currentTarget.classList.add('active');
-                
-                if (pageName === 'profileList') {
-                    if (!profileListPage.querySelector('.gender-tabs')) {
-                        const genderTabs = `<div class="gender-tabs">
-                                            <button class="gender-tab active" data-gender="Male" onclick="showGenderTab('Male', event)">പുരുഷന്മാർ</button>
-                                            <button class="gender-tab" data-gender="Female" onclick="showGenderTab('Female', event)">സ്ത്രീകൾ</button>
-                                         </div>`;
-                        profileListPage.querySelector('h2').insertAdjacentHTML('afterend', genderTabs);
-                    }
-                    showGenderTab('Male', { currentTarget: document.querySelector('.gender-tab[data-gender="Male"]') });
-                }
             }
+            event.currentTarget.classList.add('active');
             
-            window.showGenderTab = function(gender, event) {
-                document.querySelector('.gender-tab.active')?.classList.remove('active');
-                event.currentTarget.classList.add('active');
-                fetchProfiles(gender);
+            if (pageName === 'profileList') {
+                showGenderTab('Male', { currentTarget: document.querySelector('.gender-tab[data-gender="Male"]') });
             }
-
-            window.openPaymentModal = function(profileId, profileName) {
-                const amount = 200;
-                const note = `Payment for ${profileName}'s contact`;
-                const upiUrl = `upi://pay?pa=${ADMIN_UPI_ID}&pn=${encodeURIComponent(ADMIN_NAME)}&am=${amount}&tn=${encodeURIComponent(note)}&cu=INR`;
-                upiPayBtn.href = upiUrl;
-                document.getElementById('paymentProfileId').value = profileId;
-                paymentModal.style.display = "flex";
+        }
+        
+        window.showGenderTab = function(gender, event) {
+            if(document.querySelector('.gender-tab.active')) {
+                document.querySelector('.gender-tab.active').classList.remove('active');
             }
-            window.closePaymentModal = function() { paymentModal.style.display = "none"; }
+            event.currentTarget.classList.add('active');
+            fetchProfiles(gender);
+        }
 
-            window.showImageModal = function(profile) {
-                const profileData = JSON.parse(decodeURIComponent(profile));
-                modalImage.src = profileData.photoURL || 'https://via.placeholder.com/400';
-                modalCaption.innerHTML = `<h3>${profileData.name}</h3><p><strong>വയസ്സ്:</strong> ${profileData.age}</p><p><strong>ജോലി:</strong> ${profileData.profession}</p><p><strong>വിദ്യാഭ്യാസം:</strong> ${profileData.education}</p><p><strong>ജില്ല:</strong> ${profileData.district}</p><p><strong>വിവരണം:</strong> ${profileData.about}</p>`;
-                checkPaymentStatus(profileData);
-                imageModal.style.display = "flex";
+        window.openPaymentModal = function(profileId, profileName) {
+            const amount = 200;
+            const note = `Payment for ${profileName}'s contact`;
+            const upiUrl = `upi://pay?pa=${ADMIN_UPI_ID}&pn=${encodeURIComponent(ADMIN_NAME)}&am=${amount}&tn=${encodeURIComponent(note)}&cu=INR`;
+            upiPayBtn.href = upiUrl;
+            document.getElementById('paymentProfileId').value = profileId;
+            paymentModal.style.display = "flex";
+        }
+        window.closePaymentModal = function() { paymentModal.style.display = "none"; }
+
+        window.showImageModal = function(profile) {
+            const profileData = JSON.parse(decodeURIComponent(profile));
+            modalImage.src = profileData.photoURL || 'https://via.placeholder.com/400';
+            modalCaption.innerHTML = `<h3>${profileData.name}</h3><p><strong>വയസ്സ്:</strong> ${profileData.age}</p><p><strong>ജോലി:</strong> ${profileData.profession}</p><p><strong>വിദ്യാഭ്യാസം:</strong> ${profileData.education}</p><p><strong>ജില്ല:</strong> ${profileData.district}</p><p><strong>വിവരണം:</strong> ${profileData.about || 'N/A'}</p>`;
+            checkPaymentStatus(profileData);
+            imageModal.style.display = "flex";
+        }
+        window.closeImageModal = function() { imageModal.style.display = "none"; }
+        window.onclick = function(event) { if (event.target == imageModal || event.target == paymentModal) { closeImageModal(); closePaymentModal(); } }
+
+        async function checkPaymentStatus(profileData) {
+            phoneDisplay.innerHTML = '';
+            if(!currentUser) return;
+            const { data } = await _supabase.from('payment_requests').select('*').eq('requesting_user_id', currentUser.id).eq('profile_user_id', profileData.user_id).eq('status', 'approved').limit(1).single();
+            if (data) {
+                const { data: profileWithPhone } = await _supabase.from('profiles').select('phone').eq('id', profileData.id).single();
+                if (profileWithPhone) { phoneDisplay.innerHTML = `<a href="tel:${profileWithPhone.phone}" class="btn-pink-form">📞 വിളിക്കുക: ${profileWithPhone.phone}</a>`; }
+            } else {
+                phoneDisplay.innerHTML = `<button class="btn-pink-form" onclick="openPaymentModal('${profileData.id}', '${profileData.name}')">₹200 അടച്ച് നമ്പർ കാണുക</button>`;
             }
-            window.closeImageModal = function() { imageModal.style.display = "none"; }
-            window.onclick = function(event) { if (event.target == imageModal || event.target == paymentModal) { closeImageModal(); closePaymentModal(); } }
-
-            async function checkPaymentStatus(profileData) {
-                phoneDisplay.innerHTML = '';
-                if(!currentUser) return;
-                const { data } = await _supabase.from('payment_requests').select('*').eq('requesting_user_id', currentUser.id).eq('profile_user_id', profileData.user_id).eq('status', 'approved').limit(1).single();
-                if (data) {
-                    const { data: profileWithPhone } = await _supabase.from('profiles').select('phone').eq('id', profileData.id).single();
-                    if (profileWithPhone) { phoneDisplay.innerHTML = `<a href="tel:${profileWithPhone.phone}" class="btn btn-pink-form">📞 വിളിക്കുക: ${profileWithPhone.phone}</a>`; }
-                } else {
-                    phoneDisplay.innerHTML = `<button class="btn btn-pink-form" onclick="openPaymentModal('${profileData.id}', '${profileData.name}')">₹200 അടച്ച് നമ്പർ കാണുക</button>`;
-                }
-            }
-            
-            paymentForm.addEventListener('submit', async (e) => {
-                e.preventDefault();
-                const profileId = document.getElementById('paymentProfileId').value;
-                const transactionId = document.getElementById('transactionId').value;
-                const { data: profile } = await _supabase.from('profiles').select('user_id').eq('id', profileId).single();
-                if(!profile) return alert('Profile not found.');
-                const requestData = { requesting_user_id: currentUser.id, profile_user_id: profile.user_id, transaction_id: transactionId, status: 'pending' };
-                const { error } = await _supabase.from('payment_requests').insert(requestData);
-                if (error) { alert("അഭ്യർത്ഥന സമർപ്പിക്കുന്നതിൽ പിശക്: " + error.message); } 
-                else { alert("നിങ്ങളുടെ അഭ്യർത്ഥന സമർപ്പിച്ചു. അഡ്മിൻ അംഗീകരിച്ച ശേഷം നിങ്ങൾക്ക് നമ്പർ കാണാൻ സാധിക്കും."); closePaymentModal(); }
-            });
-
-            _supabase.auth.onAuthStateChange(async (event, session) => { 
-                if (session && session.user) {
-                    currentUser = session.user;
-                    authContainer.classList.add('hidden');
-                    mainContent.classList.remove('hidden');
-                    bottomNav.classList.remove('hidden');
-                    loadProfile();
-                    showMainPage('myProfile', { currentTarget: document.querySelector('.nav-item[data-page="myProfile"]') });
-                } else {
-                    currentUser = null;
-                    authContainer.classList.remove('hidden');
-                    mainContent.classList.add('hidden');
-                    bottomNav.classList.add('hidden');
-                }
-            });
-
-            async function fetchProfiles(gender = 'Male') { 
-                profilesContainer.innerHTML = `<p>${gender === 'Male' ? 'പുരുഷന്മാരുടെ' : 'സ്ത്രീകളുടെ'} പ്രൊഫൈലുകൾ ലോഡ് ചെയ്യുന്നു...</p>`; 
-                const { data: profiles, error } = await _supabase.from('profiles').select('*').eq('approved', true).eq('gender', gender); 
-                if (error) { profilesContainer.innerHTML = `<p>പ്രൊഫൈലുകൾ ലഭ്യമാക്കുന്നതിൽ പിശക്: ${error.message}</p>`; return; } 
-                if (!profiles || profiles.length === 0) { profilesContainer.innerHTML = "<p>ഈ വിഭാഗത്തിൽ അംഗീകരിച്ച പ്രൊഫൈലുകളൊന്നും ഇപ്പോൾ ലഭ്യമല്ല.</p>"; return; } 
-                let htmlContent = ''; 
-                for (const profile of profiles) { 
-                    const photoUrl = profile.photoURL || 'https://via.placeholder.com/100'; 
-                    const profileString = encodeURIComponent(JSON.stringify(profile)); 
-                    htmlContent += `<div class="profile-card" onclick="showImageModal('${profileString}')"><img src="${photoUrl}" alt="${profile.name}"><div class="profile-card-info"><h3>${profile.name}</h3><p>വയസ്സ്: ${profile.age}</p><p>ജോലി: ${profile.profession}</p><p>ജില്ല: ${profile.district}</p></div></div>`; 
-                } 
-                profilesContainer.innerHTML = htmlContent; 
-            }
-
-            loginForm.addEventListener('submit', async (e) => { e.preventDefault(); const email = document.getElementById('loginEmail').value; const password = document.getElementById('loginPassword').value; const { error } = await _supabase.auth.signInWithPassword({ email, password }); if (error) alert(error.message); });
-            signupForm.addEventListener('submit', async (e) => { e.preventDefault(); const email = document.getElementById('signupEmail').value; const password = document.getElementById('signupPassword').value; const { error } = await _supabase.auth.signUp({ email, password }); if (error) { alert(error.message); } else { alert("വിജയകരമായി രജിസ്റ്റർ ചെയ്തു!"); showAuthPage('login'); } });
-            logoutBtn.addEventListener('click', async () => { await _supabase.auth.signOut(); });
-            
-            function containsPhoneNumber(text) {
-                const phoneRegex = /\d{7,}/; 
-                return phoneRegex.test(text);
-            }
-
-            profileForm.addEventListener('submit', async (e) => {
-                e.preventDefault();
-                if (!currentUser) return;
-                const name = document.getElementById('name').value;
-                const education = document.getElementById('education').value;
-                const profession = document.getElementById('profession').value;
-                const about = document.getElementById('about').value;
-
-                if (containsPhoneNumber(name) || containsPhoneNumber(education) || containsPhoneNumber(profession) || containsPhoneNumber(about)) {
-                    alert("ഫോൺ നമ്പർ അതിനായുള്ള കോളത്തിൽ മാത്രം നൽകുക. മറ്റ് വിവരങ്ങളിൽ ഫോൺ നമ്പർ ചേർക്കാൻ പാടുള്ളതല്ല.");
-                    return;
-                }
-                saveProfileBtn.disabled = true;
-                saveProfileBtn.textContent = "സേവ് ചെയ്യുന്നു...";
-                try {
-                    let publicUrl = document.getElementById('photoPreview').src;
-                    const file = document.getElementById('photo').files[0];
-                    if (file) {
-                        const filePath = `${currentUser.id}/${Date.now()}_${file.name}`;
-                        const { error: uploadError } = await _supabase.storage.from('profile_images').upload(filePath, file, { upsert: true });
-                        if (uploadError) throw uploadError;
-                        const { data } = _supabase.storage.from('profile_images').getPublicUrl(filePath);
-                        publicUrl = data.publicUrl;
-                    }
-                    const profileData = {
-                        user_id: currentUser.id, name, phone: document.getElementById('phone').value, age: parseInt(document.getElementById('age').value), gender: document.getElementById('gender').value, mother_tongue: document.getElementById('mother_tongue').value, district: document.getElementById('district').value, education, profession, about, user_email: currentUser.email, updated_at: new Date(), photoURL: publicUrl
-                    };
-                    const { error } = await _supabase.from('profiles').upsert(profileData);
-                    if (error) throw error;
-                    alert('പ്രൊഫൈൽ അപ്ഡേറ്റ് ചെയ്തു!');
-                } catch (error) {
-                    alert("പ്രൊഫൈൽ സേവ് ചെയ്യുന്നതിൽ പിശക്: " + error.message);
-                } finally {
-                    saveProfileBtn.disabled = false;
-                    saveProfileBtn.textContent = "സേവ് ചെയ്യുക";
-                }
-            });
-
-            async function loadProfile() { if (!currentUser) return; const { data, error } = await _supabase.from('profiles').select('*').eq('user_id', currentUser.id).single(); if (error && error.code !== 'PGRST116') { console.error("Error loading profile:", error); } if (data) { document.getElementById('name').value = data.name || ''; document.getElementById('phone').value = data.phone || ''; document.getElementById('age').value = data.age || ''; document.getElementById('gender').value = data.gender || 'Male'; document.getElementById('mother_tongue').value = data.mother_tongue || ''; document.getElementById('district').value = data.district || ''; document.getElementById('education').value = data.education || ''; document.getElementById('profession').value = data.profession || ''; document.getElementById('about').value = data.about || ''; if(data.photoURL){ document.getElementById('photoPreview').src = data.photoURL; document.getElementById('photoPreview').style.display = 'block'; } } }
-            document.getElementById('photo').addEventListener('change', e => { const file = e.target.files[0]; if (file) { const reader = new FileReader(); reader.onload = e => { document.getElementById('photoPreview').src = e.target.result; document.getElementById('photoPreview').style.display = 'block'; }; reader.readAsDataURL(file); } });
-            
-            changePasswordForm.addEventListener('submit', async (e) => {
-                e.preventDefault();
-                const newPassword = document.getElementById('newPassword').value;
-                const confirmPassword = document.getElementById('confirmPassword').value;
-                if (newPassword.length < 6) { return alert("പാസ്‌വേഡ് കുറഞ്ഞത് 6 അക്ഷരങ്ങളെങ്കിലും വേണം."); }
-                if (newPassword !== confirmPassword) { return alert("രണ്ട് പാസ്‌വേഡുകളും ഒരുപോലെയല്ല."); }
-                const { error } = await _supabase.auth.updateUser({ password: newPassword });
-                if (error) { alert("പാസ്‌വേഡ് മാറ്റുന്നതിൽ പിശക്: " + error.message); }
-                else { alert("പാസ്‌വേഡ് വിജയകരമായി മാറ്റി!"); changePasswordForm.reset(); }
-            });
-
-            deleteAccountBtn.addEventListener('click', async () => {
-                if (confirm("ശ്രദ്ധിക്കുക! നിങ്ങളുടെ അക്കൗണ്ട് ഡിലീറ്റ് ചെയ്യാൻ അഭ്യർത്ഥിക്കുകയാണോ? ഇത് പിന്നീട് മാറ്റാൻ കഴിയില്ല.")) {
-                    if (!currentUser) return;
-                    const { error } = await _supabase.from('profiles').update({ deletion_requested: true }).eq('user_id', currentUser.id);
-                    if (error) { alert("അഭ്യർത്ഥന സമർപ്പിക്കുന്നതിൽ പിശക്: " + error.message); }
-                    else { alert("അക്കൗണ്ട് ഡിലീറ്റ് ചെയ്യാനുള്ള നിങ്ങളുടെ അഭ്യർത്ഥന ഞങ്ങൾ സ്വീകരിച്ചു. നിങ്ങൾ ഇപ്പോൾ ലോഗ് ഔട്ട് ആകും."); await _supabase.auth.signOut(); }
-                }
-            });
-            
-            contactAdminNav.addEventListener('click', () => {
-                const message = "Hello Admin, I need some help regarding the matrimony app.";
-                window.open(`https://wa.me/${ADMIN_WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`, '_blank');
-            });
+        }
+        
+        paymentForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const profileId = document.getElementById('paymentProfileId').value;
+            const transactionId = document.getElementById('transactionId').value;
+            const { data: profile } = await _supabase.from('profiles').select('user_id').eq('id', profileId).single();
+            if(!profile) return alert('Profile not found.');
+            const requestData = { requesting_user_id: currentUser.id, profile_user_id: profile.user_id, transaction_id: transactionId, status: 'pending' };
+            const { error } = await _supabase.from('payment_requests').insert(requestData);
+            if (error) { alert("അഭ്യർത്ഥന സമർപ്പിക്കുന്നതിൽ പിശക്: " + error.message); } 
+            else { alert("നിങ്ങളുടെ അഭ്യർത്ഥന സമർപ്പിച്ചു. അഡ്മിൻ അംഗീകരിച്ച ശേഷം നിങ്ങൾക്ക് നമ്പർ കാണാൻ സാധിക്കും."); closePaymentModal(); }
         });
-    </script>
+
+        _supabase.auth.onAuthStateChange(async (event, session) => { 
+            if (session && session.user) {
+                currentUser = session.user;
+                authContainer.classList.add('hidden');
+                mainContent.classList.remove('hidden');
+                bottomNav.classList.remove('hidden');
+                loadProfile();
+                showMainPage('myProfile', { currentTarget: document.querySelector('.nav-item[data-page="myProfile"]') });
+            } else {
+                currentUser = null;
+                authContainer.classList.remove('hidden');
+                mainContent.classList.add('hidden');
+                bottomNav.classList.add('hidden');
+            }
+        });
+
+        async function fetchProfiles(gender = 'Male') { 
+            profilesContainer.innerHTML = `<p>പ്രൊഫൈലുകൾ ലോഡ് ചെയ്യുന്നു...</p>`; 
+            const { data: profiles, error } = await _supabase.from('profiles').select('*').eq('approved', true).eq('gender', gender); 
+            if (error) { profilesContainer.innerHTML = `<p>പ്രൊഫൈലുകൾ ലഭ്യമാക്കുന്നതിൽ പിശക്: ${error.message}</p>`; return; } 
+            if (!profiles || profiles.length === 0) { profilesContainer.innerHTML = "<p>ഈ വിഭാഗത്തിൽ അംഗീകരിച്ച പ്രൊഫൈലുകളൊന്നും ഇപ്പോൾ ലഭ്യമല്ല.</p>"; return; } 
+            
+            let htmlContent = ''; 
+            for (const profile of profiles) { 
+                // ഓരോ പ്രൊഫൈലിന്റെയും ലൈക്ക്/സ്റ്റാർ കൗണ്ട് എടുക്കുന്നു
+                const { data: interactions, error: countError } = await _supabase
+                    .from('user_interactions')
+                    .select('interaction_type', { count: 'exact' })
+                    .eq('profile_id', profile.id)
+                    .in('interaction_type', ['like', 'star']);
+                
+                let likeCount = 0;
+                let starCount = 0;
+                if (interactions) {
+                    likeCount = interactions.filter(i => i.interaction_type === 'like').length;
+                    starCount = interactions.filter(i => i.interaction_type === 'star').length;
+                }
+
+                const photoUrl = profile.photoURL || 'https://via.placeholder.com/360x280?text=Photo+Not+Available'; 
+                const profileString = encodeURIComponent(JSON.stringify(profile)); 
+                
+                htmlContent += `
+                    <div class="profile-card" id="profile-card-${profile.id}">
+                      <div class="card-image-container" onclick="showImageModal('${profileString}')">
+                        <img src="${photoUrl}" alt="${profile.name}">
+                        <div class="card-overlay">
+                            ${likeCount > 0 ? `<div class="overlay-item" data-action="like">💗 <span class="count">${likeCount}</span></div>` : ''}
+                            ${starCount > 0 ? `<div class="overlay-item" data-action="star">⭐ <span class="count">${starCount}</span></div>` : ''}
+                        </div>
+                      </div>
+                      <div class="details">
+                        <h2>${profile.name}</h2>
+                        <p>${profile.age} yrs</p>
+                        <p>${profile.education || 'N/A'}, ${profile.profession || 'N/A'}</p>
+                        <p>📍 ${profile.district || 'N/A'}, Kerala</p>
+                      </div>
+                      <div class="buttons">
+                        <button class="btn reject" onclick="showImageModal('${profileString}')">✖</button>
+                        <button class="btn like" onclick="handleCardAction(event, 'like', '${profile.id}')">💗</button>
+                        <button class="btn star" onclick="handleCardAction(event, 'star', '${profile.id}')">⭐</button>
+                        <button class="btn fav" onclick="handleCardAction(event, 'fav', '${profile.id}')">❤️</button>
+                      </div>
+                    </div>
+                `; 
+            } 
+            profilesContainer.innerHTML = htmlContent; 
+        }
+
+        loginForm.addEventListener('submit', async (e) => { e.preventDefault(); const email = document.getElementById('loginEmail').value; const password = document.getElementById('loginPassword').value; const { error } = await _supabase.auth.signInWithPassword({ email, password }); if (error) alert(error.message); });
+        signupForm.addEventListener('submit', async (e) => { e.preventDefault(); const email = document.getElementById('signupEmail').value; const password = document.getElementById('signupPassword').value; const { error } = await _supabase.auth.signUp({ email, password }); if (error) { alert(error.message); } else { alert("വിജയകരമായി രജിസ്റ്റർ ചെയ്തു!"); showAuthPage('login'); } });
+        logoutBtn.addEventListener('click', async () => { await _supabase.auth.signOut(); });
+        
+        function containsPhoneNumber(text) {
+            const phoneRegex = /\d{7,}/; 
+            return phoneRegex.test(text);
+        }
+
+        profileForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            if (!currentUser) return;
+            const name = document.getElementById('name').value;
+            const education = document.getElementById('education').value;
+            const profession = document.getElementById('profession').value;
+            const about = document.getElementById('about').value;
+
+            if (containsPhoneNumber(name) || containsPhoneNumber(education) || containsPhoneNumber(profession) || containsPhoneNumber(about)) {
+                alert("ഫോൺ നമ്പർ അതിനായുള്ള കോളത്തിൽ മാത്രം നൽകുക. മറ്റ് വിവരങ്ങളിൽ ഫോൺ നമ്പർ ചേർക്കാൻ പാടുള്ളതല്ല.");
+                return;
+            }
+            saveProfileBtn.disabled = true;
+            saveProfileBtn.textContent = "സേവ് ചെയ്യുന്നു...";
+            try {
+                let publicUrl = document.getElementById('photoPreview').src;
+                const file = document.getElementById('photo').files[0];
+                if (file) {
+                    const filePath = `${currentUser.id}/${Date.now()}_${file.name}`;
+                    const { error: uploadError } = await _supabase.storage.from('profile_images').upload(filePath, file, { upsert: true });
+                    if (uploadError) throw uploadError;
+                    const { data } = _supabase.storage.from('profile_images').getPublicUrl(filePath);
+                    publicUrl = data.publicUrl;
+                }
+                const profileData = {
+                    user_id: currentUser.id, name, phone: document.getElementById('phone').value, age: parseInt(document.getElementById('age').value), gender: document.getElementById('gender').value, mother_tongue: document.getElementById('mother_tongue').value, district: document.getElementById('district').value, education, profession, about, user_email: currentUser.email, updated_at: new Date(), photoURL: publicUrl
+                };
+                const { error } = await _supabase.from('profiles').upsert(profileData);
+                if (error) throw error;
+                alert('പ്രൊഫൈൽ അപ്ഡേറ്റ് ചെയ്തു!');
+            } catch (error) {
+                alert("പ്രൊഫൈൽ സേവ് ചെയ്യുന്നതിൽ പിശക്: " + error.message);
+            } finally {
+                saveProfileBtn.disabled = false;
+                saveProfileBtn.textContent = "സേവ് ചെയ്യുക";
+            }
+        });
+
+        async function loadProfile() { if (!currentUser) return; const { data, error } = await _supabase.from('profiles').select('*').eq('user_id', currentUser.id).single(); if (error && error.code !== 'PGRST116') { console.error("Error loading profile:", error); } if (data) { document.getElementById('name').value = data.name || ''; document.getElementById('phone').value = data.phone || ''; document.getElementById('age').value = data.age || ''; document.getElementById('gender').value = data.gender || 'Male'; document.getElementById('mother_tongue').value = data.mother_tongue || ''; document.getElementById('district').value = data.district || ''; document.getElementById('education').value = data.education || ''; document.getElementById('profession').value = data.profession || ''; document.getElementById('about').value = data.about || ''; if(data.photoURL){ document.getElementById('photoPreview').src = data.photoURL; document.getElementById('photoPreview').style.display = 'block'; } } }
+        document.getElementById('photo').addEventListener('change', e => { const file = e.target.files[0]; if (file) { const reader = new FileReader(); reader.onload = e => { document.getElementById('photoPreview').src = e.target.result; document.getElementById('photoPreview').style.display = 'block'; }; reader.readAsDataURL(file); } });
+        
+        changePasswordForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const newPassword = document.getElementById('newPassword').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            if (newPassword.length < 6) { return alert("പാസ്‌വേഡ് കുറഞ്ഞത് 6 അക്ഷരങ്ങളെങ്കിലും വേണം."); }
+            if (newPassword !== confirmPassword) { return alert("രണ്ട് പാസ്‌വേഡുകളും ഒരുപോലെയല്ല."); }
+            const { error } = await _supabase.auth.updateUser({ password: newPassword });
+            if (error) { alert("പാസ്‌വേഡ് മാറ്റുന്നതിൽ പിശക്: " + error.message); }
+            else { alert("പാസ്‌വേഡ് വിജയകരമായി മാറ്റി!"); changePasswordForm.reset(); }
+        });
+
+        deleteAccountBtn.addEventListener('click', async () => {
+            if (confirm("ശ്രദ്ധിക്കുക! നിങ്ങളുടെ അക്കൗണ്ട് ഡിലീറ്റ് ചെയ്യാൻ അഭ്യർത്ഥിക്കുകയാണോ? ഇത് പിന്നീട് മാറ്റാൻ കഴിയില്ല.")) {
+                if (!currentUser) return;
+                const { error } = await _supabase.from('profiles').update({ deletion_requested: true }).eq('user_id', currentUser.id);
+                if (error) { alert("അഭ്യർത്ഥന സമർപ്പിക്കുന്നതിൽ പിശക്: " + error.message); }
+                else { alert("അക്കൗണ്ട് ഡിലീറ്റ് ചെയ്യാനുള്ള നിങ്ങളുടെ അഭ്യർത്ഥന ഞങ്ങൾ സ്വീകരിച്ചു. നിങ്ങൾ ഇപ്പോൾ ലോഗ് ഔട്ട് ആകും."); await _supabase.auth.signOut(); }
+            }
+        });
+        
+        contactAdminNav.addEventListener('click', (e) => {
+            e.preventDefault();
+            const message = "Hello Admin, I need some help regarding the matrimony app.";
+            window.open(`https://wa.me/${ADMIN_WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`, '_blank');
+        });
+    });
+</script>
 </body>
 </html>
