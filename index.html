@@ -131,7 +131,8 @@
         .btn:hover {
           transform: scale(1.1);
         }
-        .reject { background: #ff4d4d; color: #fff; }
+        
+        .details-btn { background: #007bff; color: #fff; }
         .like { background: #ff99cc; color: #fff; }
         .star { background: #333; color: #fff; }
         .fav { background: #ff6666; color: #fff; }
@@ -188,7 +189,7 @@
     <div class="panel-header">
         <h1>വിവാഹ ബന്ധം</h1>
         <p>Muslim Nikah in Malabar</p>
-        <button id="logoutBtn" class="btn btn-logout">Logout</button>
+        <button id="logoutBtn" class="btn btn-logout">പുറത്ത് പോവുക</button>
     </div>
     <div class="panel-container">
         <div id="myProfilePage">
@@ -295,12 +296,8 @@
         const ADMIN_NAME = 'Kerala Matrimony';
         const ADMIN_WHATSAPP_NUMBER = '919526605590';
         
-        // =================================================================
-        // **പ്രധാനപ്പെട്ടത്! നിങ്ങളുടെ API കീ ഇവിടെ ചേർക്കുക**
-        // =================================================================
-        const SUPABASE_URL = 'https://qfnkpmducfyyctgefyix.supabase.co'; // നിങ്ങളുടെ Supabase URL ഇവിടെ നൽകുക
-        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFmbmtwbWR1Y2Z5eWN0Z2VmeWl4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTcyMDYzMjAsImV4cCI6MjA3Mjc4MjMyMH0.xzVRnqk9fIK71Mlca_bM5h8D9a2LqXgo7xoP6EORysE'; // നിങ്ങളുടെ Supabase Anon Key ഇവിടെ നൽകുക
-        // =================================================================
+        const SUPABASE_URL = 'https://qfnkpmducfyyctgefyix.supabase.co'; 
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFmbmtwbWR1Y2Z5eWN0Z2VmeWl4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTcyMDYzMjAsImV4cCI6MjA3Mjc4MjMyMH0.xzVRnqk9fIK71Mlca_bM5h8D9a2LqXgo7xoP6EORysE';
 
         const { createClient } = supabase;
         const _supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
@@ -335,12 +332,15 @@
             event.stopPropagation(); 
             if (!currentUser) return alert('Please login to interact with profiles.');
 
+            const button = event.currentTarget;
+            button.disabled = true; // ഡബിൾ ക്ലിക്ക് ഒഴിവാക്കാൻ
+
             if (action === 'fav') {
                 alert('Added to your Favorites!');
+                button.disabled = false;
                 return;
             }
             
-            // ഉപയോക്താവ് ഇതിനകം ലൈക്ക്/സ്റ്റാർ ചെയ്തിട്ടുണ്ടോ എന്ന് പരിശോധിക്കുന്നു
             const { data: existing, error: checkError } = await _supabase
                 .from('user_interactions')
                 .select('id')
@@ -351,10 +351,10 @@
 
             if (existing) {
                 alert(`You have already added a ${action} to this profile.`);
+                button.disabled = false;
                 return;
             }
 
-            // ഡാറ്റാബേസിലേക്ക് പുതിയ വിവരം ചേർക്കുന്നു
             const { error } = await _supabase
                 .from('user_interactions')
                 .insert({ 
@@ -364,17 +364,20 @@
                 });
 
             if (error) {
-                return alert('Error: ' + error.message);
+                alert('Error: ' + error.message);
+                button.disabled = false;
+                return;
             }
             
-            // സ്ക്രീനിൽ കൗണ്ട് അപ്ഡേറ്റ് ചെയ്യുന്നു
-            const card = document.getElementById('profile-card-' + profileId);
-            const overlay = card.querySelector('.card-overlay');
-            let iconChar = action === 'like' ? '💗' : '⭐';
-            let existingOverlay = overlay.querySelector(`.overlay-item[data-action="${action}"]`);
+            const card = document.getElementById(`profile-card-${profileId}`);
+            if (!card) return;
 
-            if (existingOverlay) {
-                let countSpan = existingOverlay.querySelector('.count');
+            const overlay = card.querySelector('.card-overlay');
+            const iconChar = action === 'like' ? '💗' : '⭐';
+            let overlayItem = overlay.querySelector(`.overlay-item[data-action="${action}"]`);
+
+            if (overlayItem) {
+                const countSpan = overlayItem.querySelector('.count');
                 countSpan.textContent = parseInt(countSpan.textContent) + 1;
             } else {
                 const newItem = document.createElement('div');
@@ -383,6 +386,7 @@
                 newItem.innerHTML = `${iconChar} <span class="count">1</span>`;
                 overlay.appendChild(newItem);
             }
+            button.disabled = false;
         }
         
         window.showAuthPage = function(pageName) {
@@ -482,28 +486,32 @@
                 bottomNav.classList.add('hidden');
             }
         });
-
+        
+        // =================================================================
+        // **പ്രധാന മാറ്റം ഇവിടെയാണ്: കോഡ് കൂടുതൽ കാര്യക്ഷമമാക്കി**
+        // =================================================================
         async function fetchProfiles(gender = 'Male') { 
             profilesContainer.innerHTML = `<p>പ്രൊഫൈലുകൾ ലോഡ് ചെയ്യുന്നു...</p>`; 
-            const { data: profiles, error } = await _supabase.from('profiles').select('*').eq('approved', true).eq('gender', gender); 
+            const { data: profiles, error } = await _supabase.from('profiles').select('id, name, age, education, profession, district, photoURL').eq('approved', true).eq('gender', gender); 
+            
             if (error) { profilesContainer.innerHTML = `<p>പ്രൊഫൈലുകൾ ലഭ്യമാക്കുന്നതിൽ പിശക്: ${error.message}</p>`; return; } 
             if (!profiles || profiles.length === 0) { profilesContainer.innerHTML = "<p>ഈ വിഭാഗത്തിൽ അംഗീകരിച്ച പ്രൊഫൈലുകളൊന്നും ഇപ്പോൾ ലഭ്യമല്ല.</p>"; return; } 
             
+            const profileIds = profiles.map(p => p.id);
+            const { data: allInteractions, error: countError } = await _supabase
+                .from('user_interactions')
+                .select('profile_id, interaction_type')
+                .in('profile_id', profileIds);
+
+            if (countError) {
+                console.error("Error fetching interactions:", countError);
+            }
+
             let htmlContent = ''; 
             for (const profile of profiles) { 
-                // ഓരോ പ്രൊഫൈലിന്റെയും ലൈക്ക്/സ്റ്റാർ കൗണ്ട് എടുക്കുന്നു
-                const { data: interactions, error: countError } = await _supabase
-                    .from('user_interactions')
-                    .select('interaction_type', { count: 'exact' })
-                    .eq('profile_id', profile.id)
-                    .in('interaction_type', ['like', 'star']);
-                
-                let likeCount = 0;
-                let starCount = 0;
-                if (interactions) {
-                    likeCount = interactions.filter(i => i.interaction_type === 'like').length;
-                    starCount = interactions.filter(i => i.interaction_type === 'star').length;
-                }
+                const interactionsForProfile = allInteractions ? allInteractions.filter(i => i.profile_id === profile.id) : [];
+                const likeCount = interactionsForProfile.filter(i => i.interaction_type === 'like').length;
+                const starCount = interactionsForProfile.filter(i => i.interaction_type === 'star').length;
 
                 const photoUrl = profile.photoURL || 'https://via.placeholder.com/360x280?text=Photo+Not+Available'; 
                 const profileString = encodeURIComponent(JSON.stringify(profile)); 
@@ -524,7 +532,7 @@
                         <p>📍 ${profile.district || 'N/A'}, Kerala</p>
                       </div>
                       <div class="buttons">
-                        <button class="btn reject" onclick="showImageModal('${profileString}')">✖</button>
+                        <button class="btn details-btn" onclick="showImageModal('${profileString}')">📞</button>
                         <button class="btn like" onclick="handleCardAction(event, 'like', '${profile.id}')">💗</button>
                         <button class="btn star" onclick="handleCardAction(event, 'star', '${profile.id}')">⭐</button>
                         <button class="btn fav" onclick="handleCardAction(event, 'fav', '${profile.id}')">❤️</button>
