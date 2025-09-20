@@ -1,10 +1,11 @@
-
 <!DOCTYPE html>
 <html lang="ml">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Muslim nikah in Malabar</title>
+    <!-- Font Awesome CDN for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         html, body {
             overflow-x: hidden;
@@ -36,14 +37,14 @@
         .login-footer-links { width: 100%; padding: 1rem 0; text-align: right; }
         .login-footer-links a { color: #666; text-decoration: none; font-weight: bold; }
 
-        .panel-view { padding-bottom: 80px; min-height: 100vh; }
+        .panel-view { padding-bottom: 140px; min-height: 100vh; }
         .panel-container { max-width: 600px; margin: 0 auto; padding: 1rem; }
         
         .panel-header { background-color: #e91e63; color: white; padding: 1rem 1.5rem; text-align: center; position: relative; border-radius: 8px; }
         .panel-header h1 { margin: 0; font-size: 1.6rem; }
         .panel-header p { margin: 4px 0 0; opacity: 0.9; }
         
-        .form-container { background-color: #fff; padding: 1.5rem; border-radius: 8px; margin-top: 1rem; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .form-container { background-color: pink; padding: 1.5rem; border-radius: 8px; margin-top: 1rem; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
         .profile-list-container { padding: 1rem 0; margin-top: 1rem; }
 
         .form-container h2 { text-align: center; margin-top: 0; margin-bottom: 2rem; color: #e91e63; }
@@ -151,11 +152,104 @@
         .payment-modal-content { background-color: white; padding: 2rem; border-radius: 8px; max-width: 90%; width: 320px; position: relative; }
         .payment-modal-content h2 { color: #e91e63; margin-top: 0; }
         
-        .bottom-nav { position: fixed; bottom: 0; left: 0; width: 100%; background-color: white; border-top: 1px solid #eee; display: flex; justify-content: space-around; padding: 10px 0; box-shadow: 0 -2px 5px rgba(0,0,0,0.1); z-index: 999; }
-        .nav-item { display: flex; flex-direction: column; align-items: center; color: #888; text-decoration: none; font-size: 12px; border: none; background: none; }
-        .nav-item svg { width: 24px; height: 24px; fill: #888; margin-bottom: 4px; }
-        .nav-item.active { color: #e91e63; }
-        .nav-item.active svg { fill: #e91e63; }
+        .menu-header {
+          text-align: center;
+          padding: 30px;
+          background: linear-gradient(to right, #ff416c, #ff4b2b);
+          color: white;
+        }
+        .menu-header img {
+          width: 100px;
+          height: 100px;
+          border-radius: 50%;
+          border: 3px solid #fff;
+        }
+        .membership {
+          display: inline-block;
+          margin-top: 10px;
+          font-size: 14px;
+          padding: 4px 10px;
+          background: rgba(255,255,255,0.25);
+          border-radius: 8px;
+        }
+        .grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 10px;
+          padding: 15px;
+        }
+        .grid-item {
+          background: #fff;
+          padding: 12px;
+          border-radius: 8px;
+          text-align: center;
+          box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+          font-size: 12px;
+          cursor: pointer;
+        }
+        .upgrade-btn {
+          position: fixed;
+          bottom: 80px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 90%;
+          max-width: 500px;
+          padding: 15px;
+          background: #ff4081;
+          color: #fff;
+          font-weight: bold;
+          text-align: center;
+          border: none;
+          cursor: pointer;
+          font-size: 16px;
+          z-index: 500;
+          border-radius: 10px;
+          box-shadow: 0 4px 8px rgba(0,0,0,0.35);
+        }
+        
+        .photo-gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            padding: 10px;
+        }
+        .gallery-item {
+            position: relative;
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        .delete-photo-btn {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background-color: rgba(255, 0, 0, 0.7);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 25px;
+            height: 25px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .bottom-nav { position: fixed; bottom: 0; left: 0; width: 100%; background-color: white; border-top: 1px solid #eee; display: flex; justify-content: space-around; padding: 8px 0; box-shadow: 0 -2px 5px rgba(0,0,0,0.1); z-index: 999; }
+        .nav-item { display: flex; flex-direction: column; align-items: center; color: #888; text-decoration: none; font-size: 11px; flex: 1; border: none; background: none; }
+        .nav-item i {
+          font-size: 18px;
+          margin-bottom: 4px;
+        }
+        .nav-item.active { 
+            color: #ff4081;
+            font-weight: bold;
+        }
+        .nav-item.active i {
+            color: #ff4081;
+        }
+
     </style>
 </head>
 <body>
@@ -189,7 +283,7 @@
     <div class="panel-header">
         <h1>വിവാഹ ബന്ധം</h1>
         <p>Muslim Nikah in Malabar</p>
-        <button id="logoutBtn" class="btn btn-logout">പുറത്ത് പോവുക</button>
+        <button id="logoutBtn" class="btn btn-logout">Logout</button>
     </div>
     <div class="panel-container">
         <div id="myProfilePage">
@@ -199,6 +293,7 @@
                     <div class="input-group"><label for="name">പേര്</label><input type="text" id="name" required></div>
                     <div class="input-group"><label for="phone">ഫോൺ നമ്പർ</label><input type="tel" id="phone" required></div>
                     <div class="input-group"><label for="age">വയസ്സ്</label><input type="number" id="age" required></div>
+                    <div class="input-group"><label for="height">ഉയരം (cm)</label><input type="number" id="height" placeholder="ഉദാ: 175"></div>
                     <div class="input-group"><label for="gender">ലിംഗം</label><select id="gender" required><option value="Male">പുരുഷൻ</option><option value="Female">സ്ത്രീ</option></select></div>
                     <div class="input-group"><label for="mother_tongue">മാതൃഭാഷ</label><input type="text" id="mother_tongue" value="Malayalam" required></div>
                     <div class="input-group"><label for="district">ജില്ല</label><input type="text" id="district" required></div>
@@ -206,7 +301,15 @@
                     <div class="input-group"><label for="profession">ജോലി</label><input type="text" id="profession" required></div>
                     <div class="input-group"><label for="about">വിവരണം</label><textarea id="about" rows="4"></textarea></div>
                     <div class="input-group">
-                        <label for="photo">ഫോട്ടോ</label>
+                        <label for="special_category">പ്രത്യേക പരിഗണന (Special Category)</label>
+                        <select id="special_category">
+                            <option value="">ഒന്നുമില്ല (None)</option>
+                            <option value="Differently Abled">ഭിന്നശേഷിക്കാർ (Differently Abled)</option>
+                            <option value="Orphan/Poor">അനാഥ/പാവപ്പെട്ടവർ (Orphan/Poor)</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label for="photo">പ്രൊഫൈൽ ഫോട്ടോ</label>
                         <input type="file" id="photo" accept="image/*">
                         <img id="photoPreview" src="" alt="Photo Preview" style="max-width: 100px; margin-top: 10px; display: none;">
                     </div>
@@ -245,23 +348,84 @@
                 <button id="deleteAccountBtn" class="btn-pink-form btn-danger">അക്കൗണ്ട് ഡിലീറ്റ് ചെയ്യാൻ അഭ്യർത്ഥിക്കുക</button>
             </div>
         </div>
+        
+        <div id="menuPage" class="hidden">
+          <div class="menu-header">
+            <img src="https://i.ibb.co/20P8PWwb/Screenshot-20250909-081658-Facebook.jpg" alt="Profile" id="menuProfilePhoto">
+            <div class="membership">Membership Status: FREE</div>
+          </div>
+          <div class="grid">
+            <div class="grid-item" onclick="showMainPage('myProfile')">View/Edit Profile</div>
+            <div class="grid-item" onclick="showMainPage('profileList')">Search Profiles</div>
+            <div class="grid-item" onclick="showMainPage('managePhotosPage')">Manage Photos</div>
+            <div class="grid-item" onclick="showMainPage('settings')">Account Settings</div>
+            <div class="grid-item" onclick="openWhatsAppSupport()">Help / Support</div>
+            <div class="grid-item" onclick="showMainPage('specialCategoryPage', 'Differently Abled')">Differently Abled</div>
+            <div class="grid-item" onclick="showMainPage('onlineUsersPage')">Online Users</div>
+            <div class="grid-item" onclick="showMainPage('upgradePage')">Upgrade</div>
+            <div class="grid-item" onclick="showMainPage('specialCategoryPage', 'Orphan/Poor')">Orphan/Poor Girls</div>
+          </div>
+          <button class="upgrade-btn" onclick="showMainPage('upgradePage')">Upgrade Membership</button>
+        </div>
+
+        <div id="managePhotosPage" class="hidden">
+            <div class="form-container">
+                <h2>Manage Photos</h2>
+                <div class="input-group">
+                    <label for="extraPhotoUpload">പുതിയ ഫോട്ടോ ചേർക്കുക (ഒന്നിലധികം തിരഞ്ഞെടുക്കാം)</label>
+                    <input type="file" id="extraPhotoUpload" accept="image/*" multiple>
+                </div>
+                <button id="uploadExtraPhotosBtn" class="btn-pink-form">Upload</button>
+                <hr style="margin: 2rem 0;">
+                <h3>നിങ്ങളുടെ ഗ്യാലറി</h3>
+                <div id="photoGallery" class="photo-gallery">
+                    <!-- ഫോട്ടോകൾ ഇവിടെ കാണിക്കും -->
+                </div>
+            </div>
+        </div>
+        
+        <div id="upgradePage" class="hidden">
+            <div class="form-container">
+                <h2>Upgrade Membership</h2>
+                <p style="text-align: center; margin-bottom: 2rem;">ഒരു മാസത്തെ free പ്ലാൻ ലഭിക്കുന്നതിനായി നിങ്ങളുടെ പ്ലാൻ അപ്‌ഗ്രേഡ് ചെയ്യുക. താഴെ കാണുന്ന ബട്ടൺ ഉപയോഗിച്ച് പണമടച്ചതിന് ശേഷം അഡ്മിനുമായി ബന്ധപ്പെടുക.</p>
+                <div class="input-group">
+                    <a id="upgradePayBtn" class="btn-pink-form" href="#" target="_blank">Pay for Premium</a>
+                </div>
+            </div>
+        </div>
+        
+        <div id="specialCategoryPage" class="profile-list-container hidden">
+             <h2 id="specialCategoryTitle" style="text-align: center; margin-top: 0; margin-bottom: 2rem; color: #e91e63;"></h2>
+             <div id="specialCategoryProfilesContainer">
+                <!-- പ്രത്യേക വിഭാഗത്തിലെ പ്രൊഫൈലുകൾ ഇവിടെ കാണിക്കും -->
+             </div>
+        </div>
+        
+        <div id="onlineUsersPage" class="profile-list-container hidden">
+             <h2 style="text-align: center; margin-top: 0; margin-bottom: 2rem; color: #e91e63;">Online Users</h2>
+             <div id="onlineUsersContainer">
+                <!-- ഓൺലൈനിലുള്ള ഉപയോക്താക്കളെ ഇവിടെ കാണിക്കും -->
+             </div>
+        </div>
+
     </div>
+    
     <div id="bottomNav" class="bottom-nav hidden">
-        <a href="#" class="nav-item active" data-page="myProfile" onclick="showMainPage('myProfile', event)">
-            <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
-            My Profile
-        </a>
-        <a href="#" class="nav-item" data-page="profileList" onclick="showMainPage('profileList', event)">
-            <svg viewBox="0 0 24 24"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg>
+        <a href="#" class="nav-item" data-page="profileList" onclick="showMainPage('profileList')">
+            <i class="fas fa-users"></i>
             Profiles
         </a>
-        <a href="#" class="nav-item" data-page="settings" onclick="showMainPage('settings', event)">
-            <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69-.98l-2.49-1c-.23-.08-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98s.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12-.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73-1.69-.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.23.08.49 0 .61.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z"/></svg>
+        <a href="#" class="nav-item active" data-page="myProfile" onclick="showMainPage('myProfile')">
+            <i class="fas fa-user"></i>
+            My Profile
+        </a>
+        <a href="#" class="nav-item" data-page="settings" onclick="showMainPage('settings')">
+            <i class="fas fa-cog"></i>
             Settings
         </a>
-        <a id="contactAdminNav" href="#" class="nav-item">
-            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#888888"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M21.3,4.4C19.1,2.4,16.2,1.3,13,1.3S6.9,2.4,4.7,4.4C2.6,6.5,1.5,9.3,1.5,12.5s1.1,6,3.2,8.1c2.1,2.1,5,3.2,8.3,3.2h0.1 c3.2,0,6-1.2,8.1-3.3l-2.3-2.3c-1.4,1-3.2,1.6-5,1.6c-2.4,0-4.6-1-6.2-2.6c-1.6-1.6-2.6-3.8-2.6-6.2s1-4.6,2.6-6.2 C8.9,6.5,11,6,13,6c1.8,0,3.5,0.6,4.9,1.6l2.3-2.3C19.9,4.9,19.6,4.7,19.3,4.5z M18.4,14.5c-0.3,1.3-1.5,2.2-2.8,2.2 s-2.5-0.9-2.8-2.2H11v-2.2h1.8c0.3-1.3,1.5-2.2,2.8-2.2s2.5,0.9,2.8,2.2H20v2.2H18.4z M13,12.9c-0.9,0-1.6,0.7-1.6,1.6 s0.7,1.6,1.6,1.6s1.6-0.7,1.6-1.6S13.9,12.9,13,12.9z"/></svg>
-            Contact
+        <a href="#" class="nav-item" data-page="menuPage" onclick="showMainPage('menuPage')">
+            <i class="fas fa-bars"></i>
+            Menu
         </a>
     </div>
 </div>
@@ -278,8 +442,8 @@
      <div class="payment-modal-content">
          <span class="close-modal" onclick="closePaymentModal()">&times;</span>
          <h2>നമ്പർ കാണാൻ പണമടയ്ക്കുക</h2>
-         <p>ഈ പ്രൊഫൈലിന്റെ ഫോൺ നമ്പർ ലഭിക്കാൻ, താഴെയുള്ള ബട്ടൺ ഉപയോഗിച്ച് UPI ആപ്പ് വഴി ₹200 അയക്കുക.</p>
-         <a id="upiPayBtn" class="btn-pink-form" href="#" target="_blank" style="margin-bottom: 1.5rem;">Pay ₹200 with UPI App</a>
+         <p>ഈ പ്രൊഫൈലിന്റെ ഫോൺ നമ്പർ ലഭിക്കാൻ, താഴെയുള്ള ബട്ടൺ ഉപയോഗിച്ച് UPI ആപ്പ് വഴി ₹199 അയക്കുക.</p>
+         <a id="upiPayBtn" class="btn-pink-form" href="#" target="_blank" style="margin-bottom: 1.5rem;">Pay ₹199 with UPI App</a>
          <p>പണം അയച്ചതിന് ശേഷം ലഭിക്കുന്ന 12 അക്ക Transaction ID താഴെ നൽകുക.</p>
          <form id="paymentForm">
              <input type="hidden" id="paymentProfileId">
@@ -312,6 +476,13 @@
         const saveProfileBtn = document.getElementById('saveProfileBtn');
         const myProfilePage = document.getElementById('myProfilePage');
         const profileListPage = document.getElementById('profileListPage');
+        const settingsPage = document.getElementById('settingsPage');
+        const menuPage = document.getElementById('menuPage');
+        const managePhotosPage = document.getElementById('managePhotosPage');
+        const upgradePage = document.getElementById('upgradePage');
+        const specialCategoryPage = document.getElementById('specialCategoryPage');
+        const onlineUsersPage = document.getElementById('onlineUsersPage');
+        const panelHeader = document.querySelector('.panel-header');
         const profilesContainer = document.getElementById('profilesContainer');
         const imageModal = document.getElementById('imageModal');
         const modalImage = document.getElementById('modalImage');
@@ -321,19 +492,18 @@
         const phoneDisplay = document.getElementById('phoneDisplay');
         const upiPayBtn = document.getElementById('upiPayBtn');
         const bottomNav = document.getElementById('bottomNav');
-        const settingsPage = document.getElementById('settingsPage');
         const changePasswordForm = document.getElementById('changePasswordForm');
         const deleteAccountBtn = document.getElementById('deleteAccountBtn');
-        const contactAdminNav = document.getElementById('contactAdminNav');
         
         let currentUser = null;
+        let presenceChannel = null;
 
         window.handleCardAction = async function(event, action, profileId) {
             event.stopPropagation(); 
             if (!currentUser) return alert('Please login to interact with profiles.');
 
             const button = event.currentTarget;
-            button.disabled = true; // ഡബിൾ ക്ലിക്ക് ഒഴിവാക്കാൻ
+            button.disabled = true;
 
             if (action === 'fav') {
                 alert('Added to your Favorites!');
@@ -404,18 +574,52 @@
             }
         }
         
-        window.showMainPage = function(pageName, event) {
-            myProfilePage.classList.toggle('hidden', pageName !== 'myProfile');
-            profileListPage.classList.toggle('hidden', pageName !== 'profileList');
-            settingsPage.classList.toggle('hidden', pageName !== 'settings');
+        window.showMainPage = function(pageName, category = null) {
+            myProfilePage.classList.add('hidden');
+            profileListPage.classList.add('hidden');
+            settingsPage.classList.add('hidden');
+            menuPage.classList.add('hidden');
+            managePhotosPage.classList.add('hidden');
+            upgradePage.classList.add('hidden');
+            specialCategoryPage.classList.add('hidden');
+            onlineUsersPage.classList.add('hidden');
+
+            const pages = {
+                myProfile: myProfilePage,
+                profileList: profileListPage,
+                settings: settingsPage,
+                menuPage: menuPage,
+                managePhotosPage: managePhotosPage,
+                upgradePage: upgradePage,
+                specialCategoryPage: specialCategoryPage,
+                onlineUsersPage: onlineUsersPage
+            };
+            if (pages[pageName]) pages[pageName].classList.remove('hidden');
             
-            if(document.querySelector('.nav-item.active')) {
-                document.querySelector('.nav-item.active').classList.remove('active');
+            document.querySelectorAll('.nav-item').forEach(nav => nav.classList.remove('active'));
+            const activeNavItem = document.querySelector(`.nav-item[data-page="${pageName}"]`);
+            if (activeNavItem) activeNavItem.classList.add('active');
+
+            if (['menuPage', 'managePhotosPage', 'upgradePage', 'specialCategoryPage', 'onlineUsersPage'].includes(pageName)) {
+                panelHeader.classList.add('hidden');
+            } else {
+                panelHeader.classList.remove('hidden');
             }
-            event.currentTarget.classList.add('active');
             
             if (pageName === 'profileList') {
                 showGenderTab('Male', { currentTarget: document.querySelector('.gender-tab[data-gender="Male"]') });
+            }
+            if (pageName === 'managePhotosPage') {
+                showManagePhotos();
+            }
+            if (pageName === 'upgradePage') {
+                const amount = 999;
+                const note = "Premium Membership";
+                const upiUrl = `upi://pay?pa=${ADMIN_UPI_ID}&pn=${encodeURIComponent(ADMIN_NAME)}&am=${amount}&tn=${encodeURIComponent(note)}&cu=INR`;
+                document.getElementById('upgradePayBtn').href = upiUrl;
+            }
+            if (pageName === 'specialCategoryPage') {
+                fetchSpecialCategoryProfiles(category);
             }
         }
         
@@ -428,7 +632,7 @@
         }
 
         window.openPaymentModal = function(profileId, profileName) {
-            const amount = 200;
+            const amount = 199;
             const note = `Payment for ${profileName}'s contact`;
             const upiUrl = `upi://pay?pa=${ADMIN_UPI_ID}&pn=${encodeURIComponent(ADMIN_NAME)}&am=${amount}&tn=${encodeURIComponent(note)}&cu=INR`;
             upiPayBtn.href = upiUrl;
@@ -440,7 +644,7 @@
         window.showImageModal = function(profile) {
             const profileData = JSON.parse(decodeURIComponent(profile));
             modalImage.src = profileData.photoURL || 'https://via.placeholder.com/400';
-            modalCaption.innerHTML = `<h3>${profileData.name}</h3><p><strong>വയസ്സ്:</strong> ${profileData.age}</p><p><strong>ജോലി:</strong> ${profileData.profession}</p><p><strong>വിദ്യാഭ്യാസം:</strong> ${profileData.education}</p><p><strong>ജില്ല:</strong> ${profileData.district}</p><p><strong>വിവരണം:</strong> ${profileData.about || 'N/A'}</p>`;
+            modalCaption.innerHTML = `<h3>${profileData.name}</h3><p><strong>വയസ്സ്:</strong> ${profileData.age}</p><p><strong>ഉയരം:</strong> ${profileData.height || 'N/A'} cm</p><p><strong>ജോലി:</strong> ${profileData.profession}</p><p><strong>വിദ്യാഭ്യാസം:</strong> ${profileData.education}</p><p><strong>ജില്ല:</strong> ${profileData.district}</p><p><strong>വിവരണം:</strong> ${profileData.about || 'N/A'}</p>`;
             checkPaymentStatus(profileData);
             imageModal.style.display = "flex";
         }
@@ -455,7 +659,7 @@
                 const { data: profileWithPhone } = await _supabase.from('profiles').select('phone').eq('id', profileData.id).single();
                 if (profileWithPhone) { phoneDisplay.innerHTML = `<a href="tel:${profileWithPhone.phone}" class="btn-pink-form">📞 വിളിക്കുക: ${profileWithPhone.phone}</a>`; }
             } else {
-                phoneDisplay.innerHTML = `<button class="btn-pink-form" onclick="openPaymentModal('${profileData.id}', '${profileData.name}')">₹200 അടച്ച് നമ്പർ കാണുക</button>`;
+                phoneDisplay.innerHTML = `<button class="btn-pink-form" onclick="openPaymentModal('${profileData.id}', '${profileData.name}')">₹199 അടച്ച് നമ്പർ കാണുക</button>`;
             }
         }
         
@@ -478,21 +682,20 @@
                 mainContent.classList.remove('hidden');
                 bottomNav.classList.remove('hidden');
                 loadProfile();
-                showMainPage('myProfile', { currentTarget: document.querySelector('.nav-item[data-page="myProfile"]') });
+                showMainPage('myProfile');
+                setupPresence();
             } else {
                 currentUser = null;
                 authContainer.classList.remove('hidden');
                 mainContent.classList.add('hidden');
                 bottomNav.classList.add('hidden');
+                if (presenceChannel) presenceChannel.unsubscribe();
             }
         });
         
-        // =================================================================
-        // **പ്രധാന മാറ്റം ഇവിടെയാണ്: കോഡ് കൂടുതൽ കാര്യക്ഷമമാക്കി**
-        // =================================================================
         async function fetchProfiles(gender = 'Male') { 
             profilesContainer.innerHTML = `<p>പ്രൊഫൈലുകൾ ലോഡ് ചെയ്യുന്നു...</p>`; 
-            const { data: profiles, error } = await _supabase.from('profiles').select('id, name, age, education, profession, district, photoURL').eq('approved', true).eq('gender', gender); 
+            const { data: profiles, error } = await _supabase.from('profiles').select('*').eq('approved', true).eq('gender', gender); 
             
             if (error) { profilesContainer.innerHTML = `<p>പ്രൊഫൈലുകൾ ലഭ്യമാക്കുന്നതിൽ പിശക്: ${error.message}</p>`; return; } 
             if (!profiles || profiles.length === 0) { profilesContainer.innerHTML = "<p>ഈ വിഭാഗത്തിൽ അംഗീകരിച്ച പ്രൊഫൈലുകളൊന്നും ഇപ്പോൾ ലഭ്യമല്ല.</p>"; return; } 
@@ -504,7 +707,7 @@
                 .in('profile_id', profileIds);
 
             if (countError) {
-                console.error("Error fetching interactions:", countError);
+                console.error("Error fetching interactions:", countError.message);
             }
 
             let htmlContent = ''; 
@@ -527,7 +730,7 @@
                       </div>
                       <div class="details">
                         <h2>${profile.name}</h2>
-                        <p>${profile.age} yrs</p>
+                        <p>${profile.age} yrs, ${profile.height || ''} cm</p>
                         <p>${profile.education || 'N/A'}, ${profile.profession || 'N/A'}</p>
                         <p>📍 ${profile.district || 'N/A'}, Kerala</p>
                       </div>
@@ -555,6 +758,7 @@
         profileForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             if (!currentUser) return;
+            
             const name = document.getElementById('name').value;
             const education = document.getElementById('education').value;
             const profession = document.getElementById('profession').value;
@@ -562,23 +766,38 @@
 
             if (containsPhoneNumber(name) || containsPhoneNumber(education) || containsPhoneNumber(profession) || containsPhoneNumber(about)) {
                 alert("ഫോൺ നമ്പർ അതിനായുള്ള കോളത്തിൽ മാത്രം നൽകുക. മറ്റ് വിവരങ്ങളിൽ ഫോൺ നമ്പർ ചേർക്കാൻ പാടുള്ളതല്ല.");
-                return;
+                return; 
             }
+
+            const profileData = {
+                user_id: currentUser.id, 
+                name: name, 
+                phone: document.getElementById('phone').value, 
+                age: parseInt(document.getElementById('age').value), 
+                height: parseInt(document.getElementById('height').value),
+                gender: document.getElementById('gender').value, 
+                mother_tongue: document.getElementById('mother_tongue').value, 
+                district: document.getElementById('district').value, 
+                education: education, 
+                profession: profession, 
+                about: about, 
+                special_category: document.getElementById('special_category').value, 
+                user_email: currentUser.email, 
+                updated_at: new Date()
+            };
+
             saveProfileBtn.disabled = true;
             saveProfileBtn.textContent = "സേവ് ചെയ്യുന്നു...";
             try {
-                let publicUrl = document.getElementById('photoPreview').src;
                 const file = document.getElementById('photo').files[0];
                 if (file) {
                     const filePath = `${currentUser.id}/${Date.now()}_${file.name}`;
                     const { error: uploadError } = await _supabase.storage.from('profile_images').upload(filePath, file, { upsert: true });
                     if (uploadError) throw uploadError;
                     const { data } = _supabase.storage.from('profile_images').getPublicUrl(filePath);
-                    publicUrl = data.publicUrl;
+                    profileData.photoURL = data.publicUrl;
                 }
-                const profileData = {
-                    user_id: currentUser.id, name, phone: document.getElementById('phone').value, age: parseInt(document.getElementById('age').value), gender: document.getElementById('gender').value, mother_tongue: document.getElementById('mother_tongue').value, district: document.getElementById('district').value, education, profession, about, user_email: currentUser.email, updated_at: new Date(), photoURL: publicUrl
-                };
+                
                 const { error } = await _supabase.from('profiles').upsert(profileData);
                 if (error) throw error;
                 alert('പ്രൊഫൈൽ അപ്ഡേറ്റ് ചെയ്തു!');
@@ -590,9 +809,168 @@
             }
         });
 
-        async function loadProfile() { if (!currentUser) return; const { data, error } = await _supabase.from('profiles').select('*').eq('user_id', currentUser.id).single(); if (error && error.code !== 'PGRST116') { console.error("Error loading profile:", error); } if (data) { document.getElementById('name').value = data.name || ''; document.getElementById('phone').value = data.phone || ''; document.getElementById('age').value = data.age || ''; document.getElementById('gender').value = data.gender || 'Male'; document.getElementById('mother_tongue').value = data.mother_tongue || ''; document.getElementById('district').value = data.district || ''; document.getElementById('education').value = data.education || ''; document.getElementById('profession').value = data.profession || ''; document.getElementById('about').value = data.about || ''; if(data.photoURL){ document.getElementById('photoPreview').src = data.photoURL; document.getElementById('photoPreview').style.display = 'block'; } } }
+        async function loadProfile() { 
+            if (!currentUser) return; 
+            const { data, error } = await _supabase.from('profiles').select('*').eq('user_id', currentUser.id).single(); 
+            if (error && error.code !== 'PGRST116') { console.error("Error loading profile:", error); } 
+            if (data) { 
+                document.getElementById('name').value = data.name || ''; 
+                document.getElementById('phone').value = data.phone || ''; 
+                document.getElementById('age').value = data.age || ''; 
+                document.getElementById('height').value = data.height || '';
+                document.getElementById('gender').value = data.gender || 'Male'; 
+                document.getElementById('mother_tongue').value = data.mother_tongue || ''; 
+                document.getElementById('district').value = data.district || ''; 
+                document.getElementById('education').value = data.education || ''; 
+                document.getElementById('profession').value = data.profession || ''; 
+                document.getElementById('about').value = data.about || ''; 
+                document.getElementById('special_category').value = data.special_category || '';
+                if(data.photoURL){ 
+                    document.getElementById('photoPreview').src = data.photoURL; 
+                    document.getElementById('photoPreview').style.display = 'block'; 
+                    document.getElementById('menuProfilePhoto').src = data.photoURL;
+                } 
+            } 
+        }
         document.getElementById('photo').addEventListener('change', e => { const file = e.target.files[0]; if (file) { const reader = new FileReader(); reader.onload = e => { document.getElementById('photoPreview').src = e.target.result; document.getElementById('photoPreview').style.display = 'block'; }; reader.readAsDataURL(file); } });
         
+        const uploadExtraPhotosBtn = document.getElementById('uploadExtraPhotosBtn');
+        const extraPhotoUploadInput = document.getElementById('extraPhotoUpload');
+        const photoGallery = document.getElementById('photoGallery');
+
+        async function showManagePhotos() {
+            if (!currentUser) return;
+            photoGallery.innerHTML = '<p>ഫോട്ടോകൾ ലോഡ് ചെയ്യുന്നു...</p>';
+            const { data, error } = await _supabase.storage.from('profile_images').list(currentUser.id, {
+                limit: 100,
+                offset: 0,
+                sortBy: { column: 'created_at', order: 'desc' },
+            });
+
+            if (error) {
+                photoGallery.innerHTML = '<p>ഫോട്ടോകൾ ലഭ്യമാക്കുന്നതിൽ പിശക്.</p>';
+                return;
+            }
+            if (data.length === 0) {
+                 photoGallery.innerHTML = '<p>നിങ്ങൾ ഫോട്ടോകളൊന്നും ചേർത്തിട്ടില്ല.</p>';
+                 return;
+            }
+
+            photoGallery.innerHTML = '';
+            data.forEach(file => {
+                const { data: { publicUrl } } = _supabase.storage.from('profile_images').getPublicUrl(`${currentUser.id}/${file.name}`);
+                photoGallery.innerHTML += `
+                    <div class="gallery-item">
+                        <img src="${publicUrl}" alt="User Photo">
+                        <button class="delete-photo-btn" onclick="deletePhoto('${file.name}')">X</button>
+                    </div>`;
+            });
+        }
+
+        uploadExtraPhotosBtn.addEventListener('click', async () => {
+            const files = extraPhotoUploadInput.files;
+            if (!files || files.length === 0) {
+                return alert('ദയവായി ഫോട്ടോ തിരഞ്ഞെടുക്കുക.');
+            }
+            uploadExtraPhotosBtn.disabled = true;
+            uploadExtraPhotosBtn.textContent = 'അപ്‌ലോഡ് ചെയ്യുന്നു...';
+            
+            try {
+                for (const file of files) {
+                    const filePath = `${currentUser.id}/${Date.now()}_${file.name}`;
+                    const { error } = await _supabase.storage.from('profile_images').upload(filePath, file);
+                    if (error) throw error;
+                }
+                alert('ഫോട്ടോകൾ വിജയകരമായി അപ്‌ലോഡ് ചെയ്തു!');
+                showManagePhotos();
+            } catch (error) {
+                alert('ഫോട്ടോ അപ്‌ലോഡ് ചെയ്യുന്നതിൽ പിശക്: ' + error.message);
+            } finally {
+                uploadExtraPhotosBtn.disabled = false;
+                uploadExtraPhotosBtn.textContent = 'Upload';
+                extraPhotoUploadInput.value = '';
+            }
+        });
+
+        window.deletePhoto = async function(fileName) {
+            if (confirm("ഈ ഫോട്ടോ ഡിലീറ്റ് ചെയ്യണോ?")) {
+                const { error } = await _supabase.storage.from('profile_images').remove([`${currentUser.id}/${fileName}`]);
+                if (error) {
+                    alert('ഫോട്ടോ ഡിലീറ്റ് ചെയ്യുന്നതിൽ പിശക്: ' + error.message);
+                } else {
+                    alert('ഫോട്ടോ വിജയകരമായി ഡിലീറ്റ് ചെയ്തു.');
+                    showManagePhotos();
+                }
+            }
+        }
+        
+        async function fetchSpecialCategoryProfiles(category) {
+            const container = document.getElementById('specialCategoryProfilesContainer');
+            document.getElementById('specialCategoryTitle').textContent = category.replace(/_/g, ' ');
+            container.innerHTML = `<p>പ്രൊഫൈലുകൾ ലോഡ് ചെയ്യുന്നു...</p>`;
+            
+            const { data: profiles, error } = await _supabase.from('profiles')
+                .select('*')
+                .eq('approved', true)
+                .eq('special_category', category);
+
+            if (error) { container.innerHTML = `<p>പ്രൊഫൈലുകൾ ലഭ്യമാക്കുന്നതിൽ പിശക്: ${error.message}</p>`; return; }
+            if (!profiles || profiles.length === 0) { container.innerHTML = "<p>ഈ വിഭാഗത്തിൽ പ്രൊഫൈലുകളൊന്നും ലഭ്യമല്ല.</p>"; return; }
+            
+            let htmlContent = '';
+            for (const profile of profiles) {
+                const photoUrl = profile.photoURL || 'https://via.placeholder.com/360x280?text=Photo+Not+Available'; 
+                const profileString = encodeURIComponent(JSON.stringify(profile));
+                htmlContent += `<div class="profile-card" onclick="showImageModal('${profileString}')"><img src="${photoUrl}"> <div class="details"><h2>${profile.name}</h2><p>${profile.age} yrs, ${profile.district}</p></div></div>`;
+            }
+            container.innerHTML = htmlContent;
+        }
+
+        function setupPresence() {
+            presenceChannel = _supabase.channel('online_users', {
+                config: {
+                    presence: {
+                        key: currentUser.id,
+                    },
+                },
+            });
+
+            presenceChannel
+                .on('presence', { event: 'sync' }, () => {
+                    if (document.getElementById('onlineUsersPage').classList.contains('hidden')) return;
+                    const onlineUsers = presenceChannel.presenceState();
+                    updateOnlineUsersList(onlineUsers);
+                })
+                .subscribe(async (status) => {
+                    if (status === 'SUBSCRIBED') {
+                        await presenceChannel.track({ user_id: currentUser.id, online_at: new Date().toISOString() });
+                    }
+                });
+        }
+        
+        async function updateOnlineUsersList(onlineUsers) {
+            const container = document.getElementById('onlineUsersContainer');
+            const userIds = Object.keys(onlineUsers);
+            if(userIds.length === 0) {
+                container.innerHTML = "<p>ആരും ഓൺലൈനിൽ ഇല്ല.</p>";
+                return;
+            }
+
+            const { data: profiles, error } = await _supabase.from('profiles').select('*').in('user_id', userIds);
+            if (error || !profiles) {
+                container.innerHTML = "<p>ഓൺലൈനിലുള്ള ഉപയോക്താക്കളെ ലഭ്യമാക്കുന്നതിൽ പിശക്.</p>";
+                return;
+            }
+            
+            let htmlContent = '';
+            for (const profile of profiles) {
+                const photoUrl = profile.photoURL || 'https://via.placeholder.com/360x280?text=Photo+Not+Available'; 
+                const profileString = encodeURIComponent(JSON.stringify(profile));
+                htmlContent += `<div class="profile-card" onclick="showImageModal('${profileString}')"><img src="${photoUrl}"> <div class="details"><h2>${profile.name}</h2><p>${profile.age} yrs, ${profile.district}</p></div></div>`;
+            }
+            container.innerHTML = htmlContent;
+        }
+
         changePasswordForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             const newPassword = document.getElementById('newPassword').value;
@@ -613,11 +991,10 @@
             }
         });
         
-        contactAdminNav.addEventListener('click', (e) => {
-            e.preventDefault();
+        window.openWhatsAppSupport = function() {
             const message = "Hello Admin, I need some help regarding the matrimony app.";
             window.open(`https://wa.me/${ADMIN_WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`, '_blank');
-        });
+        };
     });
 </script>
 </body>
