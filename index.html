@@ -34,7 +34,7 @@
         .auth-form .btn-pink { background-color: #e91e63; color: white; box-shadow: 0 4px 15px rgba(233, 30, 99, 0.4); }
         
         .auth-form .form-link { font-weight: bold; color: #333; text-decoration: none; display: block; padding: 10px; }
-        .login-footer-links { width: 100%; padding: 1rem 0; text-align: right; }
+        .login-footer-links { width: 100%; padding: 1rem 0; text-align: right; display: flex; justify-content: flex-end; align-items: center; gap: 15px; } /* Updated for spacing */
         .login-footer-links a { color: #666; text-decoration: none; font-weight: bold; }
 
         .panel-view { padding-bottom: 140px; min-height: 100vh; }
@@ -275,7 +275,15 @@
                  <a href="#" class="register-link" onclick="showAuthPage('login')">Already have an account? Login</a>
             </form>
         </div>
-        <div class="footer-links"><a href="#">Contact Us</a></div>
+        <div class="login-footer-links">
+            <!-- Updated Play Store Button -->
+            <a href="https://rashikarashika966-pixel.github.io/nikah_app.apk/nikah_app.apk" download style="display: inline-block;">
+                <img alt="Download APK"
+                     src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
+                     style="height:80px;"/>
+            </a>
+            <a href="#">Contact Us</a>
+        </div>
     </div>
 </div>
 
@@ -534,7 +542,7 @@
                 });
 
             if (error) {
-                alert('Error: ' + error.message);
+                  alert('Error: ' + error.message);
                 button.disabled = false;
                 return;
             }
@@ -560,7 +568,7 @@
         }
         
         window.showAuthPage = function(pageName) {
-            loginFields.classList.add('hidden');
+          loginFields.classList.add('hidden');
             if (pageName === 'signup') {
                 loginForm.classList.add('hidden');
                 document.getElementById('registerLink').classList.add('hidden');
