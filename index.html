@@ -426,8 +426,8 @@
      <div class="payment-modal-content">
          <span class="close-modal" onclick="closePaymentModal()">&times;</span>
          <h2>നമ്പർ കാണാൻ പണമടയ്ക്കുക</h2>
-         <p>ഈ പ്രൊഫൈലിന്റെ ഫോൺ നമ്പർ ലഭിക്കാൻ, താഴെയുള്ള ബട്ടൺ ഉപയോഗിച്ച് UPI {}ആപ്പ് വഴി ₹99 അയക്കുക.</p>
-         <a id="upiPayBtn" class="btn-pink-form" href="#" target="_blank" style="margin-bottom: 1.5rem;">Pay ₹99 with UPI App</a>
+         <p>ഈ പ്രൊഫൈലിന്റെ ഫോൺ നമ്പർ ലഭിക്കാൻ, താഴെയുള്ള ബട്ടൺ ഉപയോഗിച്ച് UPI {}ആപ്പ് വഴി ₹199 അയക്കുക.</p>
+         <a id="upiPayBtn" class="btn-pink-form" href="#" target="_blank" style="margin-bottom: 1.5rem;">Pay ₹199 with UPI App</a>
          <p>പണം അയച്ചതിന് ശേഷം ലഭിക്കുന്ന 12 അക്ക Transaction ID താഴെ നൽകുക.</p>
          <form id="paymentForm">
              <input type="hidden" id="paymentProfileId">
@@ -651,7 +651,7 @@
                 showManagePhotos();
             }
             if (pageName === 'upgradePage') {
-                const amount = 699;
+                const amount = 999;
                 const note = "Premium Membership";
                 const upiUrl = `upi://pay?pa=${ADMIN_UPI_ID}&pn=${encodeURIComponent(ADMIN_NAME)}&am=${amount}&tn=${encodeURIComponent(note)}&cu=INR`;
                 document.getElementById('upgradePayBtn').href = upiUrl;
@@ -670,7 +670,7 @@
         }
 
         window.openPaymentModal = function(profileId, profileName) {
-            const amount = 99;
+            const amount = 199;
             const note = `Payment for ${profileName}'s contact`;
             const upiUrl = `upi://pay?pa=${ADMIN_UPI_ID}&pn=${encodeURIComponent(ADMIN_NAME)}&am=${amount}&tn=${encodeURIComponent(note)}&cu=INR`;
             upiPayBtn.href = upiUrl;
