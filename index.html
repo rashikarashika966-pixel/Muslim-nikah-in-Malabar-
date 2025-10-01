@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ml">
 <head>
@@ -44,95 +45,40 @@
         .panel-header h1 { margin: 0; font-size: 1.6rem; }
         .panel-header p { margin: 4px 0 0; opacity: 0.9; }
         
-        .form-container { background-color: pink; padding: 1.5rem; border-radius: 8px; margin-top: 1rem; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .form-container { background-color: #fff; padding: 1.5rem; border-radius: 8px; margin-top: 1rem; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
         .profile-list-container { padding: 1rem 0; margin-top: 1rem; }
 
         .form-container h2 { text-align: center; margin-top: 0; margin-bottom: 2rem; color: #e91e63; }
         .input-group { margin-bottom: 1.2rem; display: flex; flex-direction: column; text-align: left; }
-        .input-group label { margin-bottom: 8px; color: #555; font-weight: normal; }
+        .input-group label { margin-bottom: 8px; color: #555; font-weight: bold; }
         .input-group input, .input-group select, .input-group textarea { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 8px; font-size: 1rem;}
         
         .btn-pink-form { display: block; width: 100%; padding: 14px; border: none; border-radius: 8px; color: white; background-color: #e91e63; text-align: center; cursor: pointer; font-size: 1rem; text-decoration: none; font-weight: bold; }
-        
         .btn-logout { background-color: #6c757d; color: white; width: auto; position: absolute; top: 1rem; right: 1rem; padding: 0.5rem 1rem; border-radius: 50px; font-size: 0.9rem;}
         .btn-danger { background-color: #dc3545; }
-
-        .profile-card {
-          width: 100%;
-          max-width: 360px;
-          background: #fff;
-          border-radius: 16px;
-          overflow: hidden;
-          box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-          margin: 20px auto;
-        }
-        .card-image-container {
-            position: relative;
-            cursor: pointer;
-        }
-        .profile-card img {
-          width: 100%;
-          height: 280px;
-          object-fit: cover;
-          display: block;
-        }
-        .card-overlay {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-        .overlay-item {
-            background-color: rgba(0, 0, 0, 0.6);
-            color: white;
-            padding: 4px 10px;
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            font-size: 14px;
-            font-weight: bold;
-        }
-        .overlay-item span {
-            margin-left: 6px;
-        }
-        .details {
-          padding: 16px;
-        }
-        .details h2 {
-          margin: 0;
-          font-size: 20px;
-          color: #222;
-          text-align: left;
-        }
-        .details p {
-          font-size: 14px;
-          margin: 6px 0;
-          color: #555;
-          text-align: left;
-        }
-        .buttons {
-          display: flex;
-          justify-content: space-around;
-          padding: 12px;
-          background: #fff;
-          border-top: 1px solid #eee;
-        }
-        .btn {
-          width: 50px;
-          height: 50px;
-          border-radius: 50%;
-          border: none;
-          font-size: 22px;
-          cursor: pointer;
-          box-shadow: 0 3px 6px rgba(0,0,0,0.15);
-          transition: 0.3s;
-        }
-        .btn:hover {
-          transform: scale(1.1);
-        }
         
+        /* Step Form Styles */
+        .step { display: none; }
+        .step.active { display: block; }
+        .step-buttons { display: flex; justify-content: space-between; margin-top: 1rem; }
+        .step-buttons .btn-prev, .step-buttons .btn-next, .step-buttons .btn-submit {
+            padding: 12px 25px; border-radius: 8px; border: none; font-weight: bold; cursor: pointer;
+        }
+        .step-buttons .btn-prev { background-color: #6c757d; color: white; }
+        .step-buttons .btn-next, .step-buttons .btn-submit { background-color: #e91e63; color: white; }
+
+        .profile-card { width: 100%; max-width: 360px; background: #fff; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.2); margin: 20px auto; }
+        .card-image-container { position: relative; cursor: pointer; }
+        .profile-card img { width: 100%; height: 280px; object-fit: cover; display: block; }
+        .card-overlay { position: absolute; top: 10px; right: 10px; display: flex; flex-direction: column; gap: 8px; }
+        .overlay-item { background-color: rgba(0, 0, 0, 0.6); color: white; padding: 4px 10px; border-radius: 15px; display: flex; align-items: center; font-size: 14px; font-weight: bold; }
+        .overlay-item span { margin-left: 6px; }
+        .details { padding: 16px; }
+        .details h2 { margin: 0; font-size: 20px; color: #222; text-align: left; }
+        .details p { font-size: 14px; margin: 6px 0; color: #555; text-align: left; }
+        .buttons { display: flex; justify-content: space-around; padding: 12px; background: #fff; border-top: 1px solid #eee; }
+        .btn { width: 50px; height: 50px; border-radius: 50%; border: none; font-size: 22px; cursor: pointer; box-shadow: 0 3px 6px rgba(0,0,0,0.15); transition: 0.3s; }
+        .btn:hover { transform: scale(1.1); }
         .details-btn { background: #007bff; color: #fff; }
         .like { background: #ff99cc; color: #fff; }
         .star { background: #333; color: #fff; }
@@ -152,112 +98,38 @@
         .payment-modal-content { background-color: white; padding: 2rem; border-radius: 8px; max-width: 90%; width: 320px; position: relative; }
         .payment-modal-content h2 { color: #e91e63; margin-top: 0; }
         
-        .menu-header {
-          text-align: center;
-          padding: 30px;
-          background: linear-gradient(to right, #ff416c, #ff4b2b);
-          color: white;
-        }
-        .menu-header img {
-          width: 100px;
-          height: 100px;
-          border-radius: 50%;
-          border: 3px solid #fff;
-        }
-        .membership {
-          display: inline-block;
-          margin-top: 10px;
-          font-size: 14px;
-          padding: 4px 10px;
-          background: rgba(255,255,255,0.25);
-          border-radius: 8px;
-        }
-        .grid {
-          display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: 10px;
-          padding: 15px;
-        }
-        .grid-item {
-          background: #fff;
-          padding: 12px;
-          border-radius: 8px;
-          text-align: center;
-          box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-          font-size: 12px;
-          cursor: pointer;
-        }
-        .upgrade-btn {
-          position: fixed;
-          bottom: 80px;
-          left: 50%;
-          transform: translateX(-50%);
-          width: 90%;
-          max-width: 500px;
-          padding: 15px;
-          background: #ff4081;
-          color: #fff;
-          font-weight: bold;
-          text-align: center;
-          border: none;
-          cursor: pointer;
-          font-size: 16px;
-          z-index: 500;
-          border-radius: 10px;
-          box-shadow: 0 4px 8px rgba(0,0,0,0.35);
-        }
+        .menu-header { text-align: center; padding: 30px; background: linear-gradient(to right, #ff416c, #ff4b2b); color: white; }
+        .menu-header img { width: 100px; height: 100px; border-radius: 50%; border: 3px solid #fff; }
+        .membership { display: inline-block; margin-top: 10px; font-size: 14px; padding: 4px 10px; background: rgba(255,255,255,0.25); border-radius: 8px; }
+        .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; padding: 15px; }
+        .grid-item { background: #fff; padding: 12px; border-radius: 8px; text-align: center; box-shadow: 0 2px 4px rgba(0,0,0,0.1); font-size: 12px; cursor: pointer; }
+        .upgrade-btn { position: fixed; bottom: 80px; left: 50%; transform: translateX(-50%); width: 90%; max-width: 500px; padding: 15px; background: #ff4081; color: #fff; font-weight: bold; text-align: center; border: none; cursor: pointer; font-size: 16px; z-index: 500; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.35); }
         
-        .photo-gallery {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-            padding: 10px;
-        }
-        .gallery-item {
-            position: relative;
-        }
-        .gallery-item img {
-            width: 100%;
-            height: 120px;
-            object-fit: cover;
-            border-radius: 8px;
-        }
-        .delete-photo-btn {
-            position: absolute;
-            top: 5px;
-            right: 5px;
-            background-color: rgba(255, 0, 0, 0.7);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 25px;
-            height: 25px;
-            cursor: pointer;
-            font-weight: bold;
-        }
+        .photo-gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; padding: 10px; }
+        .gallery-item { position: relative; }
+        .gallery-item img { width: 100%; height: 120px; object-fit: cover; border-radius: 8px; }
+        .delete-photo-btn { position: absolute; top: 5px; right: 5px; background-color: rgba(255, 0, 0, 0.7); color: white; border: none; border-radius: 50%; width: 25px; height: 25px; cursor: pointer; font-weight: bold; }
 
         .bottom-nav { position: fixed; bottom: 0; left: 0; width: 100%; background-color: white; border-top: 1px solid #eee; display: flex; justify-content: space-around; padding: 8px 0; box-shadow: 0 -2px 5px rgba(0,0,0,0.1); z-index: 999; }
         .nav-item { display: flex; flex-direction: column; align-items: center; color: #888; text-decoration: none; font-size: 11px; flex: 1; border: none; background: none; }
-        .nav-item i {
-          font-size: 18px;
-          margin-bottom: 4px;
-        }
-        .nav-item.active { 
-            color: #ff4081;
-            font-weight: bold;
-        }
-        .nav-item.active i {
-            color: #ff4081;
-        }
+        .nav-item i { font-size: 18px; margin-bottom: 4px; }
+        .nav-item.active { color: #ff4081; font-weight: bold; }
+        .nav-item.active i { color: #ff4081; }
+
+        /* Profile Photo Upload Style */
+        .avatar-upload { text-align: center; margin-bottom: 1rem; }
+        .avatar-preview { width: 130px; height: 130px; border: 2px dashed #ddd; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: auto; cursor: pointer; overflow: hidden; }
+        .avatar-preview img { width: 100%; height: 100%; object-fit: cover; }
+        .avatar-preview span { font-size: 3rem; color: #ddd; }
 
     </style>
 </head>
 <body>
 <div id="authContainer" class="login-view">
     <div class="login-container">
-        <div class="content-wrap">
+        <div class="login-content-wrap">
             <img src="https://i.ibb.co/20P8PWwb/Screenshot-20250909-081658-Facebook.jpg" alt="Kerala Muslim Couple" class="login-photo">
-            <div class="title"><h1>nikah<span class="heart">♥</span>in Malabar<span>.♥</span></h1></div>
+            <div class="login-title"><h1>nikah<span class="heart">♥</span>in Malabar<span>.♥</span></h1></div>
             <form id="loginForm" class="auth-form">
                 <button type="button" class="btn btn-pink" onclick="showAuthPage('loginFields')">Login</button>
                 <div id="loginFields" class="hidden" style="margin-top: 1rem;">
@@ -298,30 +170,134 @@
             <div class="form-container">
                 <h2>എന്റെ പ്രൊഫൈൽ</h2>
                 <form id="profileForm">
-                    <div class="input-group"><label for="name">പേര്</label><input type="text" id="name" required></div>
-                    <div class="input-group"><label for="phone">ഫോൺ നമ്പർ</label><input type="tel" id="phone" required></div>
-                    <div class="input-group"><label for="age">വയസ്സ്</label><input type="number" id="age" required></div>
-                    <div class="input-group"><label for="height">ഉയരം (cm)</label><input type="number" id="height" placeholder="ഉദാ: 175"></div>
-                    <div class="input-group"><label for="gender">ലിംഗം</label><select id="gender" required><option value="Male">പുരുഷൻ</option><option value="Female">സ്ത്രീ</option></select></div>
-                    <div class="input-group"><label for="mother_tongue">മാതൃഭാഷ</label><input type="text" id="mother_tongue" value="Malayalam" required></div>
-                    <div class="input-group"><label for="district">ജില്ല</label><input type="text" id="district" required></div>
-                    <div class="input-group"><label for="education">വിദ്യാഭ്യാസം</label><input type="text" id="education" required></div>
-                    <div class="input-group"><label for="profession">ജോലി</label><input type="text" id="profession" required></div>
-                    <div class="input-group"><label for="about">വിവരണം</label><textarea id="about" rows="4"></textarea></div>
-                    <div class="input-group">
-                        <label for="special_category">പ്രത്യേക പരിഗണന (Special Category)</label>
-                        <select id="special_category">
-                            <option value="">ഒന്നുമില്ല (None)</option>
-                            <option value="Differently Abled">ഭിന്നശേഷിക്കാർ (Differently Abled)</option>
-                            <option value="Orphan/Poor">അനാഥ/പാവപ്പെട്ടവർ (Orphan/Poor)</option>
-                        </select>
+                    <!-- Step 1: Basic Details -->
+                    <div class="step active">
+                        <div class="input-group avatar-upload">
+                            <label>പ്രൊഫൈൽ ഫോട്ടോ</label>
+                            <div class="avatar-preview" id="avatarPreview">
+                                <img id="photoPreview" style="display:none;" />
+                                <span>+</span>
+                            </div>
+                            <input type="file" id="photo" accept="image/*" style="display:none;">
+                            <small>JPEG/PNG, Max 5MB</small>
+                        </div>
+                        <div class="input-group">
+                            <label for="profileFor">Profile Created For</label>
+                            <select id="profileFor" required>
+                                <option value="">Select</option>
+                                <option>Self</option><option>Son</option><option>Daughter</option>
+                                <option>Brother</option><option>Sister</option><option>Relative</option><option>Friend</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" placeholder="పూర్తి పేరు" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="gender">Gender</label>
+                            <select id="gender" required>
+                                <option value="">Select</option><option>Male</option><option>Female</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label for="dob">Date of Birth</label>
+                            <input type="date" id="dob" required>
+                        </div>
+                         <div class="input-group">
+                            <label for="height">ഉയരം (cm)</label>
+                            <input type="number" id="height" placeholder="ഉദാ: 175">
+                        </div>
+                        <div class="input-group">
+                            <label for="age">വയസ്സ്</label>
+                            <input type="number" id="age" required>
+                        </div>
+                        <div class="step-buttons">
+                            <button type="button" class="btn-next">Next</button>
+                        </div>
                     </div>
-                    <div class="input-group">
-                        <label for="photo">പ്രൊഫൈൽ ഫോട്ടോ</label>
-                        <input type="file" id="photo" accept="image/*">
-                        <img id="photoPreview" src="" alt="Photo Preview" style="max-width: 100px; margin-top: 10px; display: none;">
+
+                    <!-- Step 2: Religious & Social Details -->
+                    <div class="step">
+                        <div class="input-group">
+                            <label for="religion">Religion</label>
+                            <select id="religion" required>
+                                <option value="">Select</option><option>Islam</option><option>Hindu</option>
+                                <option>Christian</option><option>Other</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                           <label for="special_category">പ്രത്യേക പരിഗണന (Special Category)</label>
+                            <select id="special_category">
+                                <option value="">ഒന്നുമില്ല (None)</option>
+                                <option value="Differently Abled">ഭിന്നശേഷിക്കാർ (Differently Abled)</option>
+                                <option value="Orphan/Poor">അനാഥ/പാവപ്പെട്ടവർ (Orphan/Poor)</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label for="community">Community / Caste</label>
+                            <input type="text" id="community" placeholder="Community">
+                        </div>
+                        <div class="input-group">
+                            <label for="mother_tongue">Mother Tongue</label>
+                            <select id="mother_tongue" required>
+                                <option value="">Select</option><option>Malayalam</option><option>Tamil</option>
+                                <option>Hindi</option><option>Urdu</option><option>English</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label for="marital_status">Marital Status</label>
+                            <select id="marital_status" required>
+                                <option value="">Select</option><option>Never Married</option><option>Divorced</option>
+                                <option>Widowed</option><option>Separated</option>
+                            </select>
+                        </div>
+                        <div class="step-buttons">
+                            <button type="button" class="btn-prev">Previous</button>
+                            <button type="button" class="btn-next">Next</button>
+                        </div>
                     </div>
-                    <button type="submit" id="saveProfileBtn" class="btn-pink-form">സേവ് ചെയ്യുക</button>
+
+                    <!-- Step 3: Education, Career & Contact -->
+                    <div class="step">
+                        <div class="input-group">
+                            <label for="education">Education</label>
+                            <input type="text" id="education" placeholder="Education">
+                        </div>
+                        <div class="input-group">
+                            <label for="profession">Job</label>
+                            <input type="text" id="profession" placeholder="Job">
+                        </div>
+                        <div class="input-group">
+                            <label for="income">Annual Income</label>
+                            <select id="income">
+                                <option value="">Select</option><option>No Income</option><option>Below ₹2,00,000</option>
+                                <option>₹2,00,000 - ₹5,00,000</option><option>₹5,00,000 - ₹10,00,000</option><option>Above ₹10,00,000</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label for="country">Country</label>
+                            <select id="country" required>
+                                <option value="">Select</option><option>India</option><option>UAE</option><option>Saudi Arabia</option>
+                                <option>Qatar</option><option>USA</option><option>Other</option>
+                            </select>
+                        </div>
+                         <div class="input-group">
+                           <label for="district">ജില്ല</label>
+                           <input type="text" id="district" placeholder="ഉദാ: മലപ്പുറം">
+                        </div>
+                        <div class="input-group">
+                            <label for="about">About Me</label>
+                            <textarea id="about" rows="3" placeholder="നിങ്ങളെക്കുറിച്ച് എഴുതുക"></textarea>
+                        </div>
+                        <div class="input-group">
+                            <label for="phone">Mobile Number</label>
+                            <input type="tel" id="phone" placeholder="Mobile Number" required>
+                        </div>
+                        <div class="step-buttons">
+                            <button type="button" class="btn-prev">Previous</button>
+                            <button type="submit" id="saveProfileBtn" class="btn-submit">സേവ് ചെയ്യുക</button>
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>
@@ -450,8 +426,8 @@
      <div class="payment-modal-content">
          <span class="close-modal" onclick="closePaymentModal()">&times;</span>
          <h2>നമ്പർ കാണാൻ പണമടയ്ക്കുക</h2>
-         <p>ഈ പ്രൊഫൈലിന്റെ ഫോൺ നമ്പർ ലഭിക്കാൻ, താഴെയുള്ള ബട്ടൺ ഉപയോഗിച്ച് UPI ആപ്പ് വഴി ₹199 അയക്കുക.</p>
-         <a id="upiPayBtn" class="btn-pink-form" href="#" target="_blank" style="margin-bottom: 1.5rem;">Pay ₹199 with UPI App</a>
+         <p>ഈ പ്രൊഫൈലിന്റെ ഫോൺ നമ്പർ ലഭിക്കാൻ, താഴെയുള്ള ബട്ടൺ ഉപയോഗിച്ച് UPI {}ആപ്പ് വഴി ₹99 അയക്കുക.</p>
+         <a id="upiPayBtn" class="btn-pink-form" href="#" target="_blank" style="margin-bottom: 1.5rem;">Pay ₹99 with UPI App</a>
          <p>പണം അയച്ചതിന് ശേഷം ലഭിക്കുന്ന 12 അക്ക Transaction ID താഴെ നൽകുക.</p>
          <form id="paymentForm">
              <input type="hidden" id="paymentProfileId">
@@ -503,6 +479,59 @@
         const changePasswordForm = document.getElementById('changePasswordForm');
         const deleteAccountBtn = document.getElementById('deleteAccountBtn');
         
+        // Multi-step form variables and logic
+        const steps = document.querySelectorAll('.step');
+        const nextBtns = document.querySelectorAll('.btn-next');
+        const prevBtns = document.querySelectorAll('.btn-prev');
+        let currentStep = 0;
+
+        function showStep(stepIndex) {
+            steps.forEach((step, index) => {
+                step.classList.toggle('active', index === stepIndex);
+            });
+        }
+
+        nextBtns.forEach(button => {
+            button.addEventListener('click', () => {
+                // Add validation here if needed for the current step's fields
+                if (currentStep < steps.length - 1) {
+                    currentStep++;
+                    showStep(currentStep);
+                }
+            });
+        });
+
+        prevBtns.forEach(button => {
+            button.addEventListener('click', () => {
+                if (currentStep > 0) {
+                    currentStep--;
+                    showStep(currentStep);
+                }
+            });
+        });
+
+        // Initialize the first step
+        showStep(currentStep);
+        
+        // Photo preview logic
+        const avatarPreview = document.getElementById('avatarPreview');
+        const photoInput = document.getElementById('photo');
+        const photoPreviewImg = document.getElementById('photoPreview');
+
+        avatarPreview.addEventListener('click', () => photoInput.click());
+        photoInput.addEventListener('change', e => {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = e => {
+                    photoPreviewImg.src = e.target.result;
+                    photoPreviewImg.style.display = 'block';
+                    avatarPreview.querySelector('span').style.display = 'none';
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
         let currentUser = null;
         let presenceChannel = null;
 
@@ -582,6 +611,7 @@
             }
         }
         
+           
         window.showMainPage = function(pageName, category = null) {
             myProfilePage.classList.add('hidden');
             profileListPage.classList.add('hidden');
@@ -621,7 +651,7 @@
                 showManagePhotos();
             }
             if (pageName === 'upgradePage') {
-                const amount = 999;
+                const amount = 699;
                 const note = "Premium Membership";
                 const upiUrl = `upi://pay?pa=${ADMIN_UPI_ID}&pn=${encodeURIComponent(ADMIN_NAME)}&am=${amount}&tn=${encodeURIComponent(note)}&cu=INR`;
                 document.getElementById('upgradePayBtn').href = upiUrl;
@@ -640,7 +670,7 @@
         }
 
         window.openPaymentModal = function(profileId, profileName) {
-            const amount = 199;
+            const amount = 99;
             const note = `Payment for ${profileName}'s contact`;
             const upiUrl = `upi://pay?pa=${ADMIN_UPI_ID}&pn=${encodeURIComponent(ADMIN_NAME)}&am=${amount}&tn=${encodeURIComponent(note)}&cu=INR`;
             upiPayBtn.href = upiUrl;
@@ -779,17 +809,24 @@
 
             const profileData = {
                 user_id: currentUser.id, 
-                name: name, 
-                phone: document.getElementById('phone').value, 
-                age: parseInt(document.getElementById('age').value), 
+                name: name,
+                profile_for: document.getElementById('profileFor').value,
+                gender: document.getElementById('gender').value,
+                dob: document.getElementById('dob').value,
                 height: parseInt(document.getElementById('height').value),
-                gender: document.getElementById('gender').value, 
-                mother_tongue: document.getElementById('mother_tongue').value, 
-                district: document.getElementById('district').value, 
-                education: education, 
-                profession: profession, 
-                about: about, 
-                special_category: document.getElementById('special_category').value, 
+                age: parseInt(document.getElementById('age').value),
+                religion: document.getElementById('religion').value,
+                special_category: document.getElementById('special_category').value,
+                community: document.getElementById('community').value,
+                mother_tongue: document.getElementById('mother_tongue').value,
+                marital_status: document.getElementById('marital_status').value,
+                education: education,
+                profession: profession,
+                income: document.getElementById('income').value,
+                country: document.getElementById('country').value,
+                district: document.getElementById('district').value,
+                about: about,
+                phone: document.getElementById('phone').value,
                 user_email: currentUser.email, 
                 updated_at: new Date()
             };
@@ -822,25 +859,33 @@
             const { data, error } = await _supabase.from('profiles').select('*').eq('user_id', currentUser.id).single(); 
             if (error && error.code !== 'PGRST116') { console.error("Error loading profile:", error); } 
             if (data) { 
+                document.getElementById('profileFor').value = data.profile_for || '';
                 document.getElementById('name').value = data.name || ''; 
-                document.getElementById('phone').value = data.phone || ''; 
+                document.getElementById('gender').value = data.gender || '';
+                document.getElementById('dob').value = data.dob || '';
                 document.getElementById('age').value = data.age || ''; 
                 document.getElementById('height').value = data.height || '';
-                document.getElementById('gender').value = data.gender || 'Male'; 
+                document.getElementById('religion').value = data.religion || '';
+                document.getElementById('special_category').value = data.special_category || '';
+                document.getElementById('community').value = data.community || '';
                 document.getElementById('mother_tongue').value = data.mother_tongue || ''; 
-                document.getElementById('district').value = data.district || ''; 
+                document.getElementById('marital_status').value = data.marital_status || '';
                 document.getElementById('education').value = data.education || ''; 
                 document.getElementById('profession').value = data.profession || ''; 
+                document.getElementById('income').value = data.income || '';
+                document.getElementById('country').value = data.country || '';
+                document.getElementById('district').value = data.district || ''; 
                 document.getElementById('about').value = data.about || ''; 
-                document.getElementById('special_category').value = data.special_category || '';
+                document.getElementById('phone').value = data.phone || ''; 
+
                 if(data.photoURL){ 
-                    document.getElementById('photoPreview').src = data.photoURL; 
-                    document.getElementById('photoPreview').style.display = 'block'; 
+                    photoPreviewImg.src = data.photoURL; 
+                    photoPreviewImg.style.display = 'block';
+                    avatarPreview.querySelector('span').style.display = 'none';
                     document.getElementById('menuProfilePhoto').src = data.photoURL;
                 } 
             } 
         }
-        document.getElementById('photo').addEventListener('change', e => { const file = e.target.files[0]; if (file) { const reader = new FileReader(); reader.onload = e => { document.getElementById('photoPreview').src = e.target.result; document.getElementById('photoPreview').style.display = 'block'; }; reader.readAsDataURL(file); } });
         
         const uploadExtraPhotosBtn = document.getElementById('uploadExtraPhotosBtn');
         const extraPhotoUploadInput = document.getElementById('extraPhotoUpload');
